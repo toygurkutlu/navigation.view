@@ -32,7 +32,7 @@ public class NavStyleManager {
         NavStyle theme = getSelectedTheme();
         Color c = theme.getNavAttributes().getCollapseIconsColor();
 
-        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavStyleManager.class.getResource("/right_arrow.png"))), c);
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavStyleManager.class.getResource("/nav/icons/right_arrow.png"))), c);
     }
 
     /**
@@ -44,7 +44,7 @@ public class NavStyleManager {
         NavStyle theme = getSelectedTheme();
         Color c = theme.getNavAttributes().getCollapseIconsColor();
 
-        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavStyleManager.class.getResource("/left_arrow.png"))), c);
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavStyleManager.class.getResource("/nav/icons/left_arrow.png"))), c);
     }
 
     /**
