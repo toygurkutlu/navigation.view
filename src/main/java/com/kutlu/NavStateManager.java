@@ -15,10 +15,33 @@ import java.util.prefs.Preferences;
  */
 public class NavStateManager {
     private static final Preferences PREF = Preferences.userNodeForPackage(NavStateManager.class);
-    private static final String NAV_COLLAPSE = ".nav.collapse";
+    private static final String NAV_COLLAPSE = ".collapse";
+    private static final String CAN_COLLAPSE = ".can.collapse";
     private static final String SELECTED_TITLE = ".selected.title";
-    private static final String SELECTED_SUBTITLE = ".selected_subtitle";
+    private static final String SELECTED_SUBTITLE = ".selected.subtitle";
     private static final String SUB_COLLAPSE = ".sub.collapse";
+
+    /**
+     * Gets whether the collapse mechanism is enabled for the specified {@code NavigationView}.
+     *
+     * @param navName The name of the {@code NavigationView}.
+     * @return {@code true} if the collapse mechanism is enabled; {@code false} otherwise.
+     */
+    public static boolean navCanCollapse(String navName){
+        return PREF.getBoolean("nav." + navName + CAN_COLLAPSE, true);
+    }
+
+    /**
+     * Sets whether the collapse mechanism is enabled.
+     *
+     * @param navName The name of the {@code NavigationView}.
+     * @param canCollapse {@code true} to enable the collapse mechanism and display the {@code navIcon};
+     *                    {@code false} to disable the collapse mechanism and remove the {@code navIcon}.
+     */
+
+    public static void setNavCanCollapse(String navName, boolean canCollapse){
+        PREF.putBoolean("nav."+navName + CAN_COLLAPSE, canCollapse);
+    }
 
     /**
      * Gets {@code NavigationView}'s collapse status.

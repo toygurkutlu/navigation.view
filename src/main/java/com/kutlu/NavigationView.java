@@ -21,7 +21,7 @@ import java.awt.event.MouseEvent;
 public class NavigationView extends JPanel {
     private final NavItem[] navItems;
     private NavItemView[] items;
-    private final String name;
+    private final String navName;
     private int selectedTitle, selectedSub;
     private OnItemClickListener listener;
     private final NavAttributes attr;
@@ -30,6 +30,7 @@ public class NavigationView extends JPanel {
     private JPanel textPanel;
     private JLabel iconLabel;
     private boolean isNavCollapsed;
+    private boolean navCanCollapse;
 
     /**
      * A listener interface for receiving title and subtitle click events.
@@ -96,12 +97,12 @@ public class NavigationView extends JPanel {
     public NavigationView(String navName, NavItem... navItems) {
         super(new GridBagLayout());
         this.navItems = navItems;
-        this.name = navName;
+        this.navName = navName;
 
         isNavCollapsed = NavStateManager.isNavCollapsed(navName);
+        navCanCollapse = NavStateManager.navCanCollapse(navName);
 
         attr = NavStyleManager.getSelectedTheme().getNavAttributes();
-        System.out.println("Name: " + NavStyleManager.getSelectedThemeName(NavStyleManager.getSelectedThemeId()));
         selectedTitle = NavStateManager.getSelectedTitleIndex(navName);
         selectedSub = NavStateManager.getSelectedSubIndex(navName);
 
@@ -111,23 +112,23 @@ public class NavigationView extends JPanel {
     /**
      * Sets the icon for the collapsed state of the {@code NavigationView}.
      *
-     * @param ic The icon to set for the collapsed state.
+     * @param collapsedIcon The icon to set for the collapsed state.
      */
-    public void setNavCollapsedIcon(Icon ic) {
-        this.navExpandedIcon = ic;
+    public void setNavCollapsedIcon(Icon collapsedIcon) {
+        this.navExpandedIcon = collapsedIcon;
         updateNavCollapseIcon();
-        NavStateManager.setNavCollapsed(name, true);
+        NavStateManager.setNavCollapsed(navName, true);
     }
 
     /**
      * Sets the icon for the expanded state of the {@code NavigationView}.
      *
-     * @param ic The icon to set for the expanded state.
+     * @param expandedIcon The icon to set for the expanded state.
      */
-    public void setNavExpandedIcon(Icon ic) {
-        this.navCollapsedIcon = ic;
+    public void setNavExpandedIcon(Icon expandedIcon) {
+        this.navCollapsedIcon = expandedIcon;
         updateNavCollapseIcon();
-        NavStateManager.setNavCollapsed(name, false);
+        NavStateManager.setNavCollapsed(navName, false);
     }
 
     private void updateNavCollapseIcon() {
@@ -135,7 +136,6 @@ public class NavigationView extends JPanel {
     }
 
     private void init() {
-
         items = new NavItemView[navItems.length];
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -147,14 +147,17 @@ public class NavigationView extends JPanel {
             navCollapsedIcon = NavStyleManager.getDefaultCollapsedIcon();
         }
 
-        iconLabel = new JLabel(navExpandedIcon);
+
         gbc.insets = new Insets(5, 5, 5, 5);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHWEST;
 
-        add(iconLabel, gbc);
+        if (navCanCollapse) {
+            iconLabel = new JLabel(navExpandedIcon);
+            add(iconLabel, gbc);
+        }
 
         setBackground(attr.getBackground());
         gbc.fill = GridBagConstraints.BOTH;
@@ -166,7 +169,7 @@ public class NavigationView extends JPanel {
         gbcText.fill = GridBagConstraints.BOTH;
 
         for (int i = 0; i < navItems.length; i++) {
-            NavItemView itemView = new NavItemView(i, name, navItems[i]);
+            NavItemView itemView = new NavItemView(i, navName, navItems[i]);
             items[i] = itemView;
 
             gbcText.gridy = i;
@@ -218,17 +221,31 @@ public class NavigationView extends JPanel {
 
         add(textPanel, gbc);
 
-        iconLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                textPanel.setVisible(!textPanel.isVisible());
-                iconLabel.setIcon(textPanel.isVisible() ? navExpandedIcon : navCollapsedIcon);
-                NavStateManager.setNavCollapsed(name, !textPanel.isVisible());
-                isNavCollapsed = !textPanel.isVisible();
-            }
-        });
+        if (navCanCollapse) {
+            iconLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+
+                    textPanel.setVisible(!textPanel.isVisible());
+                    iconLabel.setIcon(textPanel.isVisible() ? navExpandedIcon : navCollapsedIcon);
+                    NavStateManager.setNavCollapsed(navName, !textPanel.isVisible());
+                    isNavCollapsed = !textPanel.isVisible();
+                }
+            });
+            iconLabel.setIcon(!isNavCollapsed ? navExpandedIcon : navCollapsedIcon);
+        }
 
         textPanel.setVisible(!isNavCollapsed);
-        iconLabel.setIcon(!isNavCollapsed ? navExpandedIcon : navCollapsedIcon);
+    }
+
+    /**
+     * Sets whether the collapse mechanism is enabled.
+     *
+     * @param canCollapse {@code true} to enable the collapse mechanism and display the {@code navIcon};
+     *                    {@code false} to disable the collapse mechanism and remove the {@code navIcon}.
+     */
+    public void setNavCanCollapse(boolean canCollapse) {
+        navCanCollapse = !canCollapse;
+        NavStateManager.setNavCanCollapse(navName, navCanCollapse);
     }
 }
