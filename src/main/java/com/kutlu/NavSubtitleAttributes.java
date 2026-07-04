@@ -1,20 +1,19 @@
-package org.kutlu;
+package com.kutlu;
 
 
 import java.awt.*;
 
 /**
- * Provides attributes for customizing the style of the {@code Titles}.
+ * Provides attributes for customizing the style of the {@code Subtitles}.
  * <p>
  * • For the {@code NavigationView} body appearance, use {@code NavAttributes}.<br>
- * • For the {@code Subtitle} text appearance, use {@code NavSubtitleAttributes}.
+ * • For the {@code Title} text appearance, use {@code NavTitleAttributes}.
  * </p>
  *
  * @see NavAttributes
- * @see NavSubtitleAttributes
+ * @see NavTitleAttributes
  */
-public class NavTitleAttributes extends NavTextAttributes {
-
+public class NavSubtitleAttributes extends NavTextAttributes {
     private String foreground;
     private String background;
     private String selectedBackground;
@@ -84,8 +83,7 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the background color of selected item.
      *
      * @param selectedBackground The selected item's background color.
-     * @apiNote • This background color is used to indicate which item is selected when a user clicks it.<br>
-     * • Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
+     * @apiNote • This background color is used to indicate which item is selected when a user clicks it.
      */
     public void setSelectedBackground(Color selectedBackground) {
         this.selectedBackground = NavHelper.colorToHex(selectedBackground);
@@ -106,8 +104,7 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the foreground color of selected item.
      *
      * @param selectedForeground The selected item's foreground color.
-     * @apiNote • This foreground color is used to indicate which item is selected when a user clicks it.<br>
-     * • Note that if subtitles are present, the Title's foreground color will only change if a subtitle is selected.
+     * @apiNote • This foreground color is used to indicate which item is selected when a user clicks it.
      */
     public void setSelectedForeground(Color selectedForeground) {
         this.selectedForeground = NavHelper.colorToHex(selectedForeground);
@@ -172,7 +169,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the position of the Text.
+     * Gets the position of the text.
      *
      * @param textPosition Text's position. Can be one of followings:<br>
      *                     • {@code TextPosition.LEFT} ({@code TEXT} then {@code ICON}),<br>
@@ -207,8 +204,8 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Gets the space between the text and the item above it.
      *
      * @return The gap size in pixels.
-     * @apiNote • {@code gapTop} represents the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
-     * • For the first title, it represents the space between the title and the top of the NavigationView.
+     * @apiNote • {@code gapTop} represents the space between consecutive subtitles.<br>
+     * • For the first subtitle of a group, it represents the space between the subtitle and its parent title.
      */
     @Override
     public int getGapTop() {
@@ -219,8 +216,8 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the space between the text and the item above it.
      *
      * @param gapTop The gap size in pixels.
-     * @apiNote • {@code gapTop} sets the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
-     * • For the first title, it sets the space between the title and the top of the NavigationView.
+     * @apiNote • {@code gapTop} sets the space between consecutive subtitles.<br>
+     * • For the first subtitle of a group, it sets the space between the subtitle and its parent title.
      */
     public void setGapTop(int gapTop) {
         this.gapTop = gapTop;
@@ -249,7 +246,8 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Gets the space between the text and the item below it.
      *
      * @return The gap size in pixels.
-     * @apiNote {@code gapBottom} represents the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     * @apiNote • {@code gapBottom} represents the space between consecutive subtitles.<br>
+     * • For the last subtitle of a group, it represents the space between that subtitle and the next title (except for the very last item in the entire navigation structure).
      */
     @Override
     public int getGapBottom() {
@@ -260,7 +258,8 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the space between the text and the item below it.
      *
      * @param gapBottom The gap size in pixels.
-     * @apiNote {@code gapBottom} sets the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     * @apiNote • {@code gapBottom} sets the space between consecutive subtitles.<br>
+     * • For the last subtitle of a group, it sets the space between that subtitle and the next title (except for the very last item in the entire navigation structure).
      */
     public void setGapBottom(int gapBottom) {
         this.gapBottom = gapBottom;
@@ -353,7 +352,6 @@ public class NavTitleAttributes extends NavTextAttributes {
     public int getFontSize() {
         return fontStyle;
     }
-
 
     /**
      * Sets the font size of the text.

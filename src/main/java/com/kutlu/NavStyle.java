@@ -1,4 +1,4 @@
-package org.kutlu;
+package com.kutlu;
 
 /**
  * Provides attributes for customizing the style of the {@code NavigationView}.

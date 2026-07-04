@@ -1,4 +1,4 @@
-package org.kutlu;
+package com.kutlu;
 
 /**
  * Determines the order of text and icon.<br>

@@ -1,4 +1,4 @@
-package org.kutlu;
+package com.kutlu;
 
 import javax.swing.*;
 import java.awt.*;
