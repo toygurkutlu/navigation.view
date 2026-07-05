@@ -390,11 +390,7 @@ Removes the theme with the specified name from the user theme list and deletes i
 Renames the specified theme with a new name and automatically updates its corresponding entry in Java Preferences.<br>
 
 * `duplicateUserTheme(String themeName, String newThemeName)`<br>
-Duplicates the specified user theme and creates a new one with a new name.<br>
-
-* `renameUserTheme(String oldName, String newName)`<br>
-Renames the specified theme with a new name and automatically updates its corresponding entry in Java Preferences.
-
+Duplicates the specified user theme and creates a new one with a new name.
 </details>
 
 </blockquote>
