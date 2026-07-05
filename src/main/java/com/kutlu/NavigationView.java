@@ -218,18 +218,16 @@ public class NavigationView extends JPanel {
 
         add(textPanel, gbc);
 
-        if (navCanCollapse) {
-            iconLabel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    textPanel.setVisible(!textPanel.isVisible());
-                    iconLabel.setIcon(textPanel.isVisible() ? navExpandedIcon : navCollapsedIcon);
-                    NavStateManager.setNavCollapsed(navName, !textPanel.isVisible());
-                    isNavCollapsed = !textPanel.isVisible();
-                }
-            });
-            iconLabel.setIcon(!isNavCollapsed ? navExpandedIcon : navCollapsedIcon);
-        }
+        iconLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                textPanel.setVisible(!textPanel.isVisible());
+                iconLabel.setIcon(textPanel.isVisible() ? navExpandedIcon : navCollapsedIcon);
+                NavStateManager.setNavCollapsed(navName, !textPanel.isVisible());
+                isNavCollapsed = !textPanel.isVisible();
+            }
+        });
+        iconLabel.setIcon(!isNavCollapsed ? navExpandedIcon : navCollapsedIcon);
 
         textPanel.setVisible(!isNavCollapsed);
 
