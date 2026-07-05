@@ -9,14 +9,6 @@ Requires minimum **Java 17**.
 
 `NavigationView` uses a `navName` property for uniquely identifying each instance by its name. It works directly with the `NavItem` data class.
 
-### NavItem Structure
-The `NavItem` class is a POJO that contains the following fields: `String title`, `Icon titleIcon`, `String[] subtitles`, and `Icon[] subtitleIcons`.
-
-* `title`: The main text or group header.
-* `titleIcon`: The icon for the main title (defaults to `null`).
-* `subtitles`: The array of subtitle texts. Can be `null` (if `null`, a flat `ListView` appearance is achieved; otherwise, it renders as a `Tree-like` structure).
-* `subtitleIcons`: The array of icons for the subtitles (can be `null`).
-
 ### Supported Features
 
 #### 1. ListView Mode (Flat List)
