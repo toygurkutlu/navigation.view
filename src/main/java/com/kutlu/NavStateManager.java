@@ -46,21 +46,21 @@ public class NavStateManager {
     /**
      * Gets {@code NavigationView}'s collapse status.
      *
-     * @param name The name of the {@code NavigationView}
+     * @param navName The name of the {@code NavigationView}
      * @return {@code true} if {@code NavigationView} is collapsed; {@code false} otherwise.
      */
-    public static boolean isNavCollapsed(String name) {
-        return PREF.getBoolean("nav." + name + NAV_COLLAPSE, false);
+    public static boolean isNavCollapsed(String navName) {
+        return PREF.getBoolean("nav." + navName + NAV_COLLAPSE, false);
     }
 
     /**
      * Sets {@code NavigationView}'s collapse status.
      *
-     * @param name      The name of the {@code NavigationView}
+     * @param navName      The name of the {@code NavigationView}
      * @param isVisible {@code true} if {@code NavigationView} is collapsed; {@code false} otherwise.
      */
-    public static void setNavCollapsed(String name, boolean isVisible) {
-        PREF.putBoolean("nav." + name + NAV_COLLAPSE, isVisible);
+    public static void setNavCollapsed(String navName, boolean isVisible) {
+        PREF.putBoolean("nav." + navName + NAV_COLLAPSE, isVisible);
     }
 
     /**
