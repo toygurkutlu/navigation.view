@@ -147,7 +147,6 @@ public class NavigationView extends JPanel {
             navCollapsedIcon = NavStyleManager.getDefaultCollapsedIcon();
         }
 
-
         gbc.insets = new Insets(5, 5, 5, 5);
 
         gbc.gridx = 0;
@@ -225,7 +224,6 @@ public class NavigationView extends JPanel {
             iconLabel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-
                     textPanel.setVisible(!textPanel.isVisible());
                     iconLabel.setIcon(textPanel.isVisible() ? navExpandedIcon : navCollapsedIcon);
                     NavStateManager.setNavCollapsed(navName, !textPanel.isVisible());
@@ -236,6 +234,10 @@ public class NavigationView extends JPanel {
         }
 
         textPanel.setVisible(!isNavCollapsed);
+
+        if(!navCanCollapse && NavStateManager.isNavCollapsed(navName)){
+            setNavCanCollapse(false);
+        }
     }
 
     /**
@@ -245,7 +247,13 @@ public class NavigationView extends JPanel {
      *                    {@code false} to disable the collapse mechanism and remove the {@code navIcon}.
      */
     public void setNavCanCollapse(boolean canCollapse) {
-        navCanCollapse = !canCollapse;
-        NavStateManager.setNavCanCollapse(navName, navCanCollapse);
+
+        if (!textPanel.isVisible()) textPanel.setVisible(true);
+        iconLabel.setVisible(canCollapse);
+        NavStateManager.setNavCanCollapse(navName, canCollapse);
+        if(navCanCollapse && !canCollapse){
+            navCanCollapse = false;
+            NavStateManager.setNavCollapsed(navName, false);
+        }
     }
 }

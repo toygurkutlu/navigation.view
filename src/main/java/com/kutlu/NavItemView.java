@@ -162,8 +162,6 @@ public class NavItemView extends JPanel {
     }
 
     private void init() {
-
-
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.WEST;
         gbc.weightx = 1;
