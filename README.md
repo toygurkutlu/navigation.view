@@ -399,4 +399,3 @@ Renames the specified theme with a new name and automatically updates its corres
 
 </blockquote>
 </details>
-
