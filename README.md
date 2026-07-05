@@ -309,10 +309,6 @@ Gets the collapse status of the specified `NavigationView` that matches the give
 <blockquote><br>
 <code>NavStyleManager</code> is responsible for managing, applying, and persisting color attributes.<br><br>
 
-* **Works in real time:** Selection states are updated and synchronized instantly upon each click.
-* **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
-* **Zero config:** No user intervention or manual saving is required.
-
 <details>
 <summary><b>setter methods</b></summary>
 
