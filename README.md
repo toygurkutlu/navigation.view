@@ -160,7 +160,7 @@ Requires minimum **Java 17**.
 <blockquote>
 <br>
 	
-Do not use subtitles if you want <code>ListView</code> apperance:
+Do not use subtitles if you want `ListView` apperance:
 
 ```create
 String[] titles = getTitles();
@@ -175,7 +175,7 @@ for(int i = 0; i < titles.length; i++){
      items[i] = new NavItem(title, icon, null, null);
 }
 ```
-Use subtitles if you want <code>Tree-like</code> apperance:
+Use subtitles if you want `Tree-like` apperance:
 
 ```create
 String[] titles = getTitles();
@@ -205,7 +205,7 @@ for(int i = 0; i < titles.length; i++){
 
 <blockquote><br>
 
-Create your own <code>NavigationView</code> and use your data (<code>NavItem[] items</code>).
+Create your own `NavigationView` and use your data (`NavItem[] items`).
 <br>
 
 ```create
@@ -219,7 +219,7 @@ NavigationView nav = new NavigationView("myNavigation", items);
 
 <blockquote><br>
 
-For handling title and subtitle click events, add OnItemClickListener to your <code>NavigationView</code>.
+For handling title and subtitle click events, add OnItemClickListener to your `NavigationView`.
 <br>
 
 ```create
@@ -253,19 +253,148 @@ container.add(nav);
 
 <details>
 <summary><b>1. NavStateManager</b></summary>
+<blockquote><br>
+<code>NavStateManager</code> is responsible for managing and persisting click behaviors and selection states across all navigation items.<br><br>
 
-<blockquote>
-
-<code>NavStateManager</code> is the responsible for handling the click behaviors of the <code>NavigationView</code>.
-Each click
+* **Works in real time:** Selection states are updated and synchronized instantly upon each click.
+* **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
+* **Zero config:** No user intervention or manual saving is required.
 
 <details>
 <summary><b>setter methods</b></summary>
+
+* `setNavCanCollapse(String navName, boolean canCollapse)`<br>
 Sets whether the collapse mechanism is enabled.<br>
-<code>setNavCanCollapse(String navName, boolean canCollapse)</code>
 
+* `setNavCollapsed(String navName, boolean isVisible)`<br>
+Sets `NavigationView`'s collapse status.<br>
 
+* `setSelectedTitleIndex(String navName, int index)`<br>
+Sets the selected title's index of the `NavigationView` with the specified name.
+
+* `setSelectedSubIndex(String navName, int subIndex)`<br>
+Sets the selected subtitle's index from the `NavigationView` with the specified name.
+
+* `setSubCollapsed(String navName, int titleIndex, boolean collapsed)`<br>
+Sets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
   
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+
+* `navCanCollapse(String navName)`<br>
+Gets whether the collapse mechanism is enabled for the specified `NavigationView`.<br>
+
+* `isNavCollapsed(String navName)`<br>
+Gets `NavigationView`'s collapse status.<br>
+
+* `getSelectedTitleIndex(String navName)`<br>
+Gets the selected title's index from the `NavigationView` with the specified name.<br>
+
+* `getSelectedSubIndex(String navName)`<br>
+Gets the selected subtitle's index from the `NavigationView` with the specified name.<br>
+
+* `isSubCollapsed(String navName, int titleIndex)`<br>
+Gets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
+  
+</details>
+</details>
+
+
+
+
+<details>
+<summary><b>2. NavStyleManager</b></summary>
+<blockquote><br>
+<code>NavStyleManager</code> is responsible for managing, applying, and persisting color attributes.<br><br>
+
+* **Works in real time:** Selection states are updated and synchronized instantly upon each click.
+* **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
+* **Zero config:** No user intervention or manual saving is required.
+
+<details>
+<summary><b>setter methods</b></summary>
+
+* `setSelectedTheme(int themeId)`<br>
+Sets the theme that matches the specified `themeId` as selected.
+
+* `setSelectedTheme(String themeName)`<br>
+Sets the theme that matches the specified `themeName` as selected..<br>
+
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+
+* `getDefaultCollapsedIcon()`<br>
+Gets the default collapsed icon.<br>
+
+* `getDefaultExpandedIcon()`<br>
+Gets the default expanded icon.<br>
+
+* `getSelectedThemeId()`<br>
+Gets the ID of the selected theme.<br>
+
+* `getSelectedTheme()`<br>
+Gets the theme that matches the `SELECTED_THEME_ID`.<br>
+
+* `getSelectedThemeName(int themeId)`<br>
+Gets the name of the selected theme.<br>
+
+* `getThemeById(int themeId)`<br>
+Gets the theme that matches the specified `themeId`.<br>
+
+* `getUserTheme(String name)`<br>
+Gets the user theme that matches the specified name.<br>
+
+* `getUserThemes()`<br>
+Gets all user-defined themes.<br>
+
+* `getUserThemeList()`<br>
+Gets the list of names of the user-defined themes.<br>
+
+* `getUserThemeId(String themeName)`<br>
+Gets the id of the user theme.<br>
+
+* `getUserThemeIndex(String themeName)`<br>
+Gets the index of the theme name from `UserThemeList`.<br>
+
+* `getThemeId(String themeName)`<br>
+Gets the id of the theme.<br>
+
+* `getAllThemeList()`<br>
+Gets all system and user defined theme names.<br>
+
+* `getSystemThemes()`<br>
+Gets all pre-defined system themes.<br>
+
+* `getSystemTheme(int themeId)`<br>
+Gets the pre-defined system theme.<br>
+
+* `getDefaultTheme()`<br>
+Gets the pre-defined default Dark Theme.<br>
+
+</details>
+
+<details>
+<summary><b>other methods</b></summary>
+
+* `createUserTheme(NavStyle theme, String name)`<br>
+Creates a new user theme and persists its data to Java Preferences..<br>
+
+* `removeUserTheme(String themeName)`<br>
+Removes the theme with the specified name from the user theme list and deletes its persisted data from Java Preferences.<br>
+
+* `renameUserTheme(String oldName, String newName)`<br>
+Renames the specified theme with a new name and automatically updates its corresponding entry in Java Preferences.<br>
+
+* `duplicateUserTheme(String themeName, String newThemeName)`<br>
+Duplicates the specified user theme and creates a new one with a new name.<br>
+
+* `renameUserTheme(String oldName, String newName)`<br>
+Renames the specified theme with a new name and automatically updates its corresponding entry in Java Preferences.
+
 </details>
 
 </blockquote>
