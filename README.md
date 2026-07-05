@@ -175,8 +175,6 @@ for(int i = 0; i < titles.length; i++){
      items[i] = new NavItem(title, icon, null, null);
 }
 ```
-
-	
 Use subtitles if you want <code>Tree-like</code> apperance:
 
 ```create
@@ -205,8 +203,6 @@ for(int i = 0; i < titles.length; i++){
 <details>
 <summary><b>3. Create NavigationView</b></summary>
 
-
-
 <blockquote><br>
 
 Create your own <code>NavigationView</code> and use your data (<code>NavItem[] items</code>).
@@ -220,8 +216,6 @@ NavigationView nav = new NavigationView("myNavigation", items);
 
 <details>
 <summary><b>4. Add ClickListener to your NavigationView</b></summary>
-
-
 
 <blockquote><br>
 
@@ -247,8 +241,6 @@ nav.setOnItemClickListener(new NavigationView.OnItemClickListener() {
 <details>
 <summary><b>5. Add the NavigationView to its container.</b></summary>
 
-
-
 <blockquote><br>
 
 ```create
@@ -256,3 +248,26 @@ container.add(nav);
 ```
 </blockquote>
 </details>
+
+## Managers
+
+<details>
+<summary><b>1. NavStateManager</b></summary>
+
+<blockquote>
+
+<code>NavStateManager</code> is the responsible for handling the click behaviors of the <code>NavigationView</code>.
+Each click
+
+<details>
+<summary><b>setter methods</b></summary>
+Sets whether the collapse mechanism is enabled.<br>
+<code>setNavCanCollapse(String navName, boolean canCollapse)</code>
+
+
+  
+</details>
+
+</blockquote>
+</details>
+
