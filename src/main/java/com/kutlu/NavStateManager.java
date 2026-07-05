@@ -104,18 +104,6 @@ public class NavStateManager {
     }
 
     /**
-     * Sets the collapse status of the specified {@code NavigationView} that matches the given {@code titleIndex}.
-     *
-     * @param navName    The name of the {@code NavigationView}.
-     * @param titleIndex The index of the parent title.
-     * @param collapsed  {@code true} if the subtitle container is collapsed; {@code false} otherwise.
-     */
-    public static void setSubCollapsed(String navName, int titleIndex, boolean collapsed) {
-        String key = "nav." + navName + SUB_COLLAPSE + titleIndex;
-        PREF.putBoolean(key, collapsed);
-    }
-
-    /**
      * Gets the collapse status of the specified {@code NavigationView} that matches the given {@code titleIndex}.
      *
      * @param navName    The name of the {@code NavigationView}.
@@ -126,5 +114,17 @@ public class NavStateManager {
     public static boolean isSubCollapsed(String navName, int titleIndex) {
         String key = "nav." + navName + SUB_COLLAPSE + titleIndex;
         return PREF.getBoolean(key, false);
+    }
+
+    /**
+     * Sets the collapse status of the specified {@code NavigationView} that matches the given {@code titleIndex}.
+     *
+     * @param navName    The name of the {@code NavigationView}.
+     * @param titleIndex The index of the parent title.
+     * @param collapsed  {@code true} if the subtitle container is collapsed; {@code false} otherwise.
+     */
+    public static void setSubCollapsed(String navName, int titleIndex, boolean collapsed) {
+        String key = "nav." + navName + SUB_COLLAPSE + titleIndex;
+        PREF.putBoolean(key, collapsed);
     }
 }

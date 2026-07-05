@@ -67,9 +67,9 @@ public class NavStyleManager {
     }
 
     /**
-     * Gets the ID of the theme.
+     * Gets the ID of the selected theme.
      *
-     * @return The ID of the theme.
+     * @return The ID of the selected theme.
      * @apiNote The default value is {@code NavThemes.DARK}.
      */
     public static int getSelectedThemeId() {
@@ -163,13 +163,13 @@ public class NavStyleManager {
     }
 
     /**
-     * Changes the theme name from {@code oldName} to {@code newName}.
+     * Changes the theme name from {@code oldName} to {@code newName} from the {@code UserThemeList}.
      *
      * @param oldName The current name of the theme.
      * @param newName The new name of the theme.
      * @return The {@code String} representation of the {@code UserThemeList}.
      */
-    public static String replaceName(String oldName, String newName) {
+    private static String replaceName(String oldName, String newName) {
         String[] arr = getUserThemeList();
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(oldName)) {
@@ -189,14 +189,14 @@ public class NavStyleManager {
     }
 
     /**
-     * Gets the name of the theme.
+     * Gets the name of the selected theme.
      *
-     * @param themeId The ID of the theme.
+     * @param themeId The ID of the selected theme.
      * @return The theme name that matches the specified {@code themeId}, or {@code null} if no match is found.
      */
     public static String getSelectedThemeName(int themeId) {
         if (themeId < TOTAL_DEFAULT_THEMES) {
-            return systemThemeNames[themeId];
+            return getSystemThemeList()[themeId];
         }
 
         int userIndex = getThemeIndex(themeId);
@@ -214,12 +214,11 @@ public class NavStyleManager {
      *
      * @param themeId The id of the theme.
      * @return The user theme index that matches the {@code themeId}.
-     * @apiNote Theme index will be same value with index if one {@code SystemThemes} indexes is used.
+     * @apiNote Theme index will be same value with index if one {@code SystemThemes} indexes are used.
      */
     public static int getThemeIndex(int themeId) {
         return themeId > 3 ? themeId - TOTAL_DEFAULT_THEMES : themeId;
     }
-
 
     /**
      * Gets the theme that matches the specified {@code themeId}.
@@ -267,7 +266,7 @@ public class NavStyleManager {
     }
 
     /**
-     * Gets the theme that matches the specified name.
+     * Gets the user theme that matches the specified name.
      *
      * @param name The name of the theme.
      * @return The {@code NavStyle} object representing the user-defined theme, or {@code null} if no match is found.
@@ -317,27 +316,27 @@ public class NavStyleManager {
     }
 
     /**
-     * Get the id of the theme.
+     * Gets the id of the theme.
      *
      * @param themeName The name of the theme.
      * @return The id of theme that matches with {@code themeName}.
      */
     public static int getThemeId(String themeName) {
-        return Arrays.asList(getAllThemeNames()).indexOf(themeName);
+        return Arrays.asList(getAllThemeList()).indexOf(themeName);
     }
 
     /**
-     * Get all system and user defined theme names.
+     * Gets all system and user defined theme names.
      *
      * @return Array of all available theme names.
      */
-    public static String[] getAllThemeNames() {
+    public static String[] getAllThemeList() {
         int userThemes = getUserThemeList().length;
         String[] themes = new String[TOTAL_DEFAULT_THEMES + userThemes];
 
         for (int i = 0; i < themes.length; i++) {
             if (i < 4) {
-                themes[i] = systemThemeNames[i];
+                themes[i] = getSystemThemeList()[i];
             } else {
                 themes[i] = getUserThemeList()[i - TOTAL_DEFAULT_THEMES];
             }
@@ -357,7 +356,7 @@ public class NavStyleManager {
     }
 
     /**
-     * Pre-defined system themes. The array contains the following:
+     * Gets pre-defined system themes. The array contains the following:
      * <ul>
      *     <li>{@code 0: NavThemes.DARK}</li>
      *     <li>{@code 1: NavThemes.DARK_ORANGE}</li>
@@ -365,21 +364,25 @@ public class NavStyleManager {
      *     <li>{@code 3: NavThemes.IVORY}</li>
      * </ul>
      */
-    public static final NavStyle[] systemThemes = new NavStyle[]{
-            NavThemes.Dark(),
-            NavThemes.DarkOrange(),
-            NavThemes.Light(),
-            NavThemes.Ivory()};
+    public static NavStyle[] getSystemThemes() {
+        return new NavStyle[]{
+                NavThemes.Dark(),
+                NavThemes.DarkOrange(),
+                NavThemes.Light(),
+                NavThemes.Ivory()};
+    }
 
     /**
      * An array of {@code String} objects containing the system theme names.
      */
-    public static final String[] systemThemeNames = new String[]{
-            NavThemes.DARK,
-            NavThemes.DARK_ORANGE,
-            NavThemes.LIGHT,
-            NavThemes.IVORY
-    };
+    public static String[] getSystemThemeList() {
+        return new String[]{
+                NavThemes.DARK,
+                NavThemes.DARK_ORANGE,
+                NavThemes.LIGHT,
+                NavThemes.IVORY
+        };
+    }
 
     /**
      * Gets the pre-defined system theme.
@@ -394,7 +397,7 @@ public class NavStyleManager {
      * @return The pre-defined system theme.
      */
     public static NavStyle getSystemTheme(int themeId) {
-        return systemThemes[themeId];
+        return getSystemThemes()[themeId];
     }
 
     /**
