@@ -27,8 +27,6 @@ Requires minimum **Java 17**.
 <details>
 <summary><b>1. Add to your project</b></summary>
 
-
-
 [Click here](https://jitpack.io/#toygurkutlu/navigation.view/1.0.2) to check JitPack.
 <blockquote>
 <details>
@@ -254,7 +252,7 @@ container.add(nav);
 NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 
 <details>
-<summary><b>1. Use pre-defined system themes</b></summary>
+<summary><b>1. Pre-defined system themes</b></summary>
 	There are 4 different pre-defined system themes:<br>
 	<br>
 	<ul>
@@ -263,21 +261,41 @@ NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 	<li><code>NavThemes.Light()</code><br></li>
 	<li><code>NavThemes.Ivory()</code></li>
 	</ul>
+</details>
 
-Use their id to set those pre-defined system themes:
+<details>
+<summary><b>2. Create a theme</b></summary><br>
+	
+You can create a new theme with creating your own `NavStyle`. `NavStyle` object contains following 3 objects:<br>
+<ul>
+<li><code>NavAttributes</code> : Body attributes of <code>NavigationView</code></li><br>
+<li><code>NavTitleAttributes</code> : Title apperance attributes</li><br>
+<li><code>NavSubtitleAttributes</code> : Subtitle appearance attribtes</li>.
+</ul>
+
+</details>
+
+<details>
+<summary><b>3. Set a theme</b></summary><br>
+	
+You can use either the theme ID or the theme name to apply a theme (supported for both system and user-defined themes).	<br>
+	
+* Use theme id to set a theme:
 	
 ```create
 NavStyleManager.setSelectedTheme(NavThemes.LIGHT_THEME);
+NavStyleManager.setSelectedTheme(4);
 ```
 
-or use theme name:
+* Use theme name to set a theme:
 	
 ```create
 NavStyleManager.setSelectedTheme(NavThemes.LIGHT);
+NavStyleManager.setSelectedTheme("MyTheme");
 ```
 The selected system theme's ID is stored in Java Preferences and will be automatically loaded on startup.
-	
-<br>
+
+> **Note:** Pre-defined system theme IDs are 0-indexed (ranging from 0 to 3). User-defined theme IDs start from 4 and increment sequentially.
 
 </details>
 
