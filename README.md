@@ -27,10 +27,10 @@ Requires minimum **Java 17**.
 <details>
 <summary><b>1. Add to your project</b></summary>
 
-<blockquote>
+
 
 [Click here](https://jitpack.io/#toygurkutlu/navigation.view/1.0.2) to check JitPack.
-
+<blockquote>
 <details>
 <summary><b>gradle</b></summary>
 
@@ -253,16 +253,18 @@ container.add(nav);
 
 <details>
 <summary><b>1. NavStateManager</b></summary>
-<blockquote><br>
-<code>NavStateManager</code> is responsible for managing and persisting click behaviors and selection states across all navigation items.<br><br>
+<br>
+<code>NavStateManager</code> is responsible for managing and persisting click behaviors and selection states across all navigation items.<br>
 
 * **Works in real time:** Selection states are updated and synchronized instantly upon each click.
 * **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
 * **Zero config:** No user intervention or manual saving is required.
 
+
 <details>
 <summary><b>setter methods</b></summary>
-
+<blockquote>
+	
 * `setNavCanCollapse(String navName, boolean canCollapse)`<br>
 Sets whether the collapse mechanism is enabled.<br>
 
@@ -277,12 +279,13 @@ Sets the selected subtitle's index from the `NavigationView` with the specified 
 
 * `setSubCollapsed(String navName, int titleIndex, boolean collapsed)`<br>
 Sets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
-  
+  </blockquote>
 </details>
 
 <details>
 <summary><b>getter methods</b></summary>
-
+<blockquote>
+	
 * `navCanCollapse(String navName)`<br>
 Gets whether the collapse mechanism is enabled for the specified `NavigationView`.<br>
 
@@ -297,31 +300,30 @@ Gets the selected subtitle's index from the `NavigationView` with the specified 
 
 * `isSubCollapsed(String navName, int titleIndex)`<br>
 Gets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
-  
+  </blockquote>
 </details>
 </details>
-
-
-
 
 <details>
 <summary><b>2. NavStyleManager</b></summary>
-<blockquote><br>
+<br>
 <code>NavStyleManager</code> is responsible for managing, applying, and persisting color attributes.<br><br>
 
 <details>
 <summary><b>setter methods</b></summary>
-
+<blockquote>
+	
 * `setSelectedTheme(int themeId)`<br>
 Sets the theme that matches the specified `themeId` as selected.
 
 * `setSelectedTheme(String themeName)`<br>
 Sets the theme that matches the specified `themeName` as selected..<br>
-
+</blockquote>
 </details>
 
 <details>
 <summary><b>getter methods</b></summary>
+<blockquote>
 
 * `getDefaultCollapsedIcon()`<br>
 Gets the default collapsed icon.<br>
@@ -372,9 +374,11 @@ Gets the pre-defined system theme.<br>
 Gets the pre-defined default Dark Theme.<br>
 
 </details>
+</blockquote>
 
 <details>
 <summary><b>other methods</b></summary>
+<blockquote>
 
 * `createUserTheme(NavStyle theme, String name)`<br>
 Creates a new user theme and persists its data to Java Preferences..<br>
