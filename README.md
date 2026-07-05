@@ -249,6 +249,38 @@ container.add(nav);
 </blockquote>
 </details>
 
+## Customizing NavigationView
+
+NavigationView can be customized using `NavStyleManager` and `NavStyle`.
+
+<details>
+<summary><b>1. Use pre-defined system themes</b></summary>
+	There are 4 different pre-defined system themes:<br>
+	<br>
+	<ul>
+	<li><code>NavThemes.Dark()</code><br></li>
+	<li><code>NavThemes.DarkOrange()</code><br></li>
+	<li><code>NavThemes.Light()</code><br></li>
+	<li><code>NavThemes.Ivory()</code></li>
+	</ul>
+
+Use their id to set those pre-defined system themes:
+	
+```create
+NavStyleManager.setSelectedTheme(NavThemes.LIGHT_THEME);
+```
+
+or use theme name:
+	
+```create
+NavStyleManager.setSelectedTheme(NavThemes.LIGHT);
+```
+The selected system theme's ID is stored in Java Preferences and will be automatically loaded on startup.
+	
+<br>
+
+</details>
+
 ## Managers
 
 <details>
