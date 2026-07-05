@@ -153,10 +153,8 @@ public class NavigationView extends JPanel {
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.NORTHWEST;
 
-        if (navCanCollapse) {
-            iconLabel = new JLabel(navExpandedIcon);
-            add(iconLabel, gbc);
-        }
+        iconLabel = new JLabel(navExpandedIcon);
+        add(iconLabel, gbc);
 
         setBackground(attr.getBackground());
         gbc.fill = GridBagConstraints.BOTH;
@@ -249,7 +247,7 @@ public class NavigationView extends JPanel {
     public void setNavCanCollapse(boolean canCollapse) {
 
         if (!textPanel.isVisible()) textPanel.setVisible(true);
-        iconLabel.setVisible(canCollapse);
+        if(iconLabel != null) iconLabel.setVisible(canCollapse);
         NavStateManager.setNavCanCollapse(navName, canCollapse);
         if(navCanCollapse && !canCollapse){
             navCanCollapse = false;
