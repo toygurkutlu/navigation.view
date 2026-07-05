@@ -34,7 +34,7 @@ The `NavItem` class is a POJO that contains the following fields: `String title`
 [Click here](https://jitpack.io/#toygurkutlu/navigation.view/1.0.2) to check JitPack.
 
 <details>
-<summary><b>gradle</b> (Click to expand/collapse)</summary>
+<summary><b>gradle</b></summary>
 
 * ### Repositories
   Add the repository to your root `build.gradle` file:
@@ -61,7 +61,7 @@ The `NavItem` class is a POJO that contains the following fields: `String title`
 </details>
 
 <details>
-<summary><b>gradle.kts</b> (Click to expand/collapse)</summary>
+<summary><b>gradle.kts</b></summary>
 
 * ### Repositories
 Add it in your `build.gradle.kts` at the end of repositories:
@@ -88,7 +88,7 @@ Add it in your `build.gradle.kts` at the end of repositories:
 </details>
 
 <details>
-<summary><b>maven</b> (Click to expand/collapse)</summary>
+<summary><b>maven</b></summary>
 
 * ### Repositories
 Add to pom.xml
@@ -118,7 +118,7 @@ Add to pom.xml
 
 
 <details>
-<summary><b>sbt</b> (Click to expand/collapse)</summary>
+<summary><b>sbt</b></summary>
 
 * ### Repositories
 Add it in your build.sbt at the end of resolvers:
@@ -137,7 +137,7 @@ Add it in your build.sbt at the end of resolvers:
 </details>
 
 <details>
-<summary><b>leiningen</b> (Click to expand/collapse)</summary>
+<summary><b>leiningen</b></summary>
 
 * ### Repositories
 Add it in your project.clj at the end of repositories:
