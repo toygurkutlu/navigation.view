@@ -820,13 +820,14 @@ You can use either the theme ID or the theme name to apply a theme (supported fo
 ```create
 NavStyleManager.setSelectedTheme(NavThemes.LIGHT_THEME);
 NavStyleManager.setSelectedTheme(4);
+NavStyleManager.setSelectedTheme(NavStyleManager.getUserThemeId("my_theme"));
 ```
 
 * Use theme name to set a theme:
 	
 ```create
 NavStyleManager.setSelectedTheme(NavThemes.LIGHT);
-NavStyleManager.setSelectedTheme("MyTheme");
+NavStyleManager.setSelectedTheme("my_theme");
 ```
 The selected system theme's ID is stored in Java Preferences and will be automatically loaded on startup.
 
