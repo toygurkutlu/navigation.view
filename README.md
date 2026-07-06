@@ -322,15 +322,15 @@ Returns the collapse icons color of the `NavigationView`.
 <summary><b>Create NavAttributes</b></summary><br>
 	
 ```create
-    private NavAttributes createNavAttributes(){
+private NavAttributes createNavAttributes() {
         NavAttributes attr = new NavAttributes();
 
-        attr.setBackground(new Color(100,100,100));
+        attr.setBackground(new Color(100, 100, 100));
         attr.setCollapseIconsColored(true);
-        attr.setCollapseIconsColor(new Color(200,175,200));
+        attr.setCollapseIconsColor(new Color(200, 175, 200));
 
         return attr;
-    }
+}
 ```
 </blockquote>
 </details>
@@ -518,9 +518,9 @@ private NavTitleAttributes createTitleAttributes() {
         attr.setGapBottom(5);
         attr.setGapRight(5);
         attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));
-        
+
         return attr;
-    }
+}
 ```
 </blockquote>
 </details>
@@ -691,7 +691,7 @@ Returns the font size of the subtitle's `Font`.
 <summary><b>Create NavSubtitleAttributes</b></summary><br>
 	
 ```create
-    private NavSubtitleAttributes createSubAttributes() {
+private NavSubtitleAttributes createSubAttributes() {
         NavSubtitleAttributes attr = new NavSubtitleAttributes();
 
         attr.setForeground(new Color(150, 225, 150));
@@ -709,7 +709,7 @@ Returns the font size of the subtitle's `Font`.
         attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));
 
         return attr;
-    }
+}
 ```
 </blockquote>
 </details>
@@ -810,21 +810,25 @@ Returns the font size of the subtitle's `Font`.
 <summary><b>Create NavSubtitleAttributes</b></summary><br>
 	
 ```create
-NavSubtitleAttributes subAttr = new NavSubtitleAttributes();
+private NavSubtitleAttributes createSubAttributes() {
+        NavSubtitleAttributes attr = new NavSubtitleAttributes();
 
-subAttr.setForeground(new Color(150,225,150));
-subAttr.setBackground(new Color(41, 41, 41));
-subAttr.setSelectedForeground(new Color(190,200,190));
-subAttr.setSelectedBackground(new Color(15, 75, 15));
-subAttr.setHoverBackground(new Color(250,250,250));
-subAttr.setHoverForeground(new Color(75, 75, 55));
-subAttr.setTextPosition(TextPosition.RIGHT);
-subAttr.setIconTextGap(5);
-subAttr.setGapTop(5);
-subAttr.setGapLeft(10);
-subAttr.setGapBottom(5);
-subAttr.setGapRight(10);
-subAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));;
+        attr.setForeground(new Color(150, 225, 150));
+        attr.setBackground(new Color(41, 41, 41));
+        attr.setSelectedForeground(new Color(190, 200, 190));
+        attr.setSelectedBackground(new Color(15, 75, 15));
+        attr.setHoverBackground(new Color(250, 250, 250));
+        attr.setHoverForeground(new Color(75, 75, 55));
+        attr.setTextPosition(TextPosition.RIGHT);
+        attr.setIconTextGap(5);
+        attr.setGapTop(5);
+        attr.setGapLeft(10);
+        attr.setGapBottom(5);
+        attr.setGapRight(10);
+        attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));
+
+        return attr;
+}
 ```
 </blockquote>
 </details>
