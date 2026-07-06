@@ -938,7 +938,6 @@ NavStyleManager.updateUserTheme("duplicated_theme", newStyle);
 * **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
 * **Zero config:** No user intervention or manual saving is required.
 
-
 <details>
 <summary><b>setter methods</b></summary>
 <blockquote>
@@ -1083,6 +1082,64 @@ Updates the specified theme with a new `NavStyle`.
 
 
 
-updateUserTheme(String themeName, NavStyle style)
+
+<details>
+<summary><b>3. NavHelper</b></summary>
+<br>
+<blockquote>
+	
+`NavStateManager` is responsible for managing and persisting click behaviors and selection states across all navigation items.<br>
+
+* **Works in real time:** Selection states are updated and synchronized instantly upon each click.
+* **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
+* **Zero config:** No user intervention or manual saving is required.
+
+<details>
+<summary><b>setter methods</b></summary>
+<blockquote>
+	
+* `setNavCanCollapse(String navName, boolean canCollapse)`<br>
+Sets whether the collapse mechanism is enabled.<br>
+
+* `setNavCollapsed(String navName, boolean isVisible)`<br>
+Sets `NavigationView`'s collapse status.<br>
+
+* `setSelectedTitleIndex(String navName, int index)`<br>
+Sets the selected title's index of the `NavigationView` with the specified name.
+
+* `setSelectedSubIndex(String navName, int subIndex)`<br>
+Sets the selected subtitle's index from the `NavigationView` with the specified name.
+
+* `setSubCollapsed(String navName, int titleIndex, boolean collapsed)`<br>
+Sets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
+  </blockquote>
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+<blockquote>
+	
+* `navCanCollapse(String navName)`<br>
+Gets whether the collapse mechanism is enabled for the specified `NavigationView`.<br>
+
+* `isNavCollapsed(String navName)`<br>
+Gets `NavigationView`'s collapse status.<br>
+
+* `getSelectedTitleIndex(String navName)`<br>
+Gets the selected title's index from the `NavigationView` with the specified name.<br>
+
+* `getSelectedSubIndex(String navName)`<br>
+Gets the selected subtitle's index from the `NavigationView` with the specified name.<br>
+
+* `isSubCollapsed(String navName, int titleIndex)`<br>
+Gets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
+  </blockquote>
+</details>
+</blockquote>
+</details>
+
+
+
+
 </blockquote>
 </details>
