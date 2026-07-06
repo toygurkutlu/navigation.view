@@ -715,11 +715,6 @@ private NavSubtitleAttributes createSubAttributes() {
 </details>
 
 
-
-
-
-
-
 <details>
 <summary><b>NavStyle</b></summary><br>
 
@@ -744,113 +739,75 @@ Title attributes of the `NavigationView`.
 <summary><b>setter methods</b></summary>
 	
 * `setNavAttributes(NavAttributes navAttributes)`<br>
- Takes the `foreground` object as a parameter and coverts it to a hexadecimal code.
+Sets the body attributes for `NavigationView`.
 
 * `setTitleAttributes(NavTitleAttributes titleAttributes)`<br>
-Takes the `background` object as a parameter and coverts it to a hexadecimal code.
+Sets the title attributes for `NavigationView`.
 
 * `setSubtitleAttributes(NavSubtitleAttributes subtitleAttributes)`<br>
-Takes the `selectedForeground` object as a parameter and converts it to a hexadecimal code.
+Sets the subtitle attributes for `NavigationView`.
 </details>
 
 <details>
 <summary><b>getter methods</b></summary>
 	
 * `getNavAttributes()`<br>
- Returns the foreground color of the subtitle.
+Returns the body attributes of the `NavigationView`.
 
 * `getTitleAttributes()`<br>
-Returns the background color of the subtitle.
+Returns the title attributes of the `NavigationView`.
 
 * `getSubtitleAttributes()`<br>
-Returns the foreground color of the selected subtitle.
-
-* `getSelectedBackground()`<br>
-Returns the background color of the selected subtitle.
-
-* `getHoverForeground()`<br>
-Returns the hover foreground color of the subtitle.
-
-* `getHoverBackground()`<br>
-Returns the hover background color of the subtitle.
-
-* `getTextPosition()`<br>
-Returns the `TextPosition` of the subtitle according to its icon.
-
-* `getIconTextGap()`<br>
-Returns the space (in pixels) between subtitle and icon.
-
-* `getGapTop()`<br>
-Returns the space (in pixels) between the subtitle and the previous item (the title of the same group or the previous subtitle of the same group).
-
-* `getGapLeft()`<br>
-Returns the left indentation space (in pixels) for the subtitle relative to the `NavigationView`.
-
-* `getGapBottom()`<br>
-Returns the space (in pixels) between the subtitle and the next item (the next subtitle of the same group, the next title of the next group, or the bottom of the `NavigationView`).
-
-* `getGapRight()`<br>
-Returns the right indentation space (in pixels) for the subtitle relative to the `NavigationView`.
-
-* `getFont()`<br>
-Returns the subtitle's `Font`.
-
-* `getFontFamily()`<br>
-Returns the font family of the subtitle's `Font`.
-
-* `getFontStyle()`<br>
-Returns the font style of the subtitle's `Font`.
-
-* `getFontSize()`<br>
-Returns the font size of the subtitle's `Font`.
+Returns the subtitle attributes of the `NavigationView`.
 
 </details>
 
 <details>
-<summary><b>Create NavSubtitleAttributes</b></summary><br>
-	
+<summary><b>Create NavStyle</b></summary><br>
+
+* Prepare your style attributes:
 ```create
-private NavSubtitleAttributes createSubAttributes() {
-        NavSubtitleAttributes attr = new NavSubtitleAttributes();
+NavAttributes bodyAttr = createNavAttributes();
+NavTitleAttributes titleAttr = createTitleAttributes();
+NavSubtitleAttributes subAttr = createSubAttributes();
+```
+* Either use the no-argument constructor to create a `NavStyle` instance and invoke its setter methods to configure individual attributes:
+```create
+NavStyle myStyle = new NavStyle();
+myStyle.setNavAttributes(bodyAttr);
+myStyle.setTitleAttributes(titleAttr);
+myStyle.setSubtitleAttributes(subAttr);
+```
+* Or use the all-arguments constructor to create a `NavStyle` instance and initialize all attributes at once:
+```create
+NavAttributes bodyAttr = createNavAttributes();
+NavTitleAttributes titleAttr = createTitleAttributes();
+NavSubtitleAttributes subAttr = createSubAttributes();
 
-        attr.setForeground(new Color(150, 225, 150));
-        attr.setBackground(new Color(41, 41, 41));
-        attr.setSelectedForeground(new Color(190, 200, 190));
-        attr.setSelectedBackground(new Color(15, 75, 15));
-        attr.setHoverBackground(new Color(250, 250, 250));
-        attr.setHoverForeground(new Color(75, 75, 55));
-        attr.setTextPosition(TextPosition.RIGHT);
-        attr.setIconTextGap(5);
-        attr.setGapTop(5);
-        attr.setGapLeft(10);
-        attr.setGapBottom(5);
-        attr.setGapRight(10);
-        attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));
-
-        return attr;
-}
+NavStyle myStyle = new NavStyle(bodyAttr, titleAttr, subAttr);
 ```
 </blockquote>
 </details>
 
+<details>
+<summary><b>NavStyleManager</b></summary><br>
 
+A helper class for responsible of handling `NavigationView` themes.
 
+<blockquote>
 
+Create a user theme via using `NavStyleManager`'s `createUserTheme(NavStyle style, String name)` method.
+```create
+NavStyleManager.createUserTheme(myStyle, "my_theme");
+```
 
+> **Note:** The `createUserTheme()` method creates a user theme with the specified name and sets it as the selected theme at the same time.
 
 </blockquote>
+</details>
 
-</details> <!--> </>
-
-
-
-
-
-
-
-
-
-
+</blockquote>
+</details>
 
 <details>
 <summary><b>3. Set a theme</b></summary><br>
