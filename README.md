@@ -348,13 +348,13 @@ Title attributes of `NavigationView`.
 Represents the hexadecimal representation of the background color for the title.
 
 * `String selectedForeground`<br>
-Represents the hexadecimal representation of the title's selected item foreground color. This color is used to highlight the title by changing its foreground when the mouse hovers over its area. This foreground color is used to indicate which item is selected when a user clicks it. 
+Represents the hexadecimal representation of the title's selected item foreground color. This foreground color is used to indicate which title is selected when a user clicks it. 
 
 * `String selectedBackground`<br>
-Represents the hexadecimal representation of the title's selected item background color. This background color is used to indicate which item is selected when a user clicks it. Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
+Represents the hexadecimal representation of the title's selected item background color. This background color is used to indicate which title is selected when a user clicks it. Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
 
 * `String hoverForeground`<br>
-Represents the hexadecimal representation of the title's hover foreground color. 
+Represents the hexadecimal representation of the title's hover foreground color. This color is used to highlight the title by changing its foreground when the mouse hovers over its area.
 
 * `String hoverBackground`<br>
 Represents the hexadecimal representation of the title's hover background color. This color is used to highlight the title by changing its background when the mouse hovers over its area.
@@ -375,7 +375,7 @@ Left indentation space for the title relative to the `NavigationView`.
 The space between the title and the item below it.
 
 * `int gapRight`<br>
-The right indentation space for the text relative to the `NavigationView`.
+The right indentation space for the title relative to the `NavigationView`.
 
 * `String fontFamily`<br>
  The font family of the title.
@@ -413,19 +413,19 @@ Takes the `hoverBackground` object as a parameter and coverts it to a hexadecima
  Sets the the position of the title.
 
 * `setIconTextGap(int iconTextGap)`<br>
-Sets the space (in pixels) between text and icon.
+Sets the space (in pixels) between title and icon.
 
 * `setGapTop(int gapTop)`<br>
 Sets the space (in pixels) between the title and the previous item (the top of the `NavigationView`, the previous title, or the last subtitle of the previous group).
 
 * `setGapLeft(int gapLeft)`<br>
-Sets the left indentation space (in pixels) for the text relative to the `NavigationView`.
+Sets the left indentation space (in pixels) for the title relative to the `NavigationView`.
 
 * `setGapBottom(int gapBottom)`<br>
-Sets the space (in pixels) between the title text and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
+Sets the space (in pixels) between the title and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
 
 * `setGapRight(int gapRight)`<br>
-Sets the right indentation space (in pixels) for the text relative to the `NavigationView`.
+Sets the right indentation space (in pixels) for the title relative to the `NavigationView`.
 
 * `setFont(Font font)`<br>
 Takes the `Font` object as a parameter and sets the following fields: `fontFamily`, `fontStyle`, and `fontSize`.
@@ -466,19 +466,19 @@ Returns the hover background color of the title.
 Returns the `TextPosition` of the title according to its icon.
 
 * `getIconTextGap()`<br>
-Returns the space (in pixels) between text and icon.
+Returns the space (in pixels) between title and icon.
 
 * `getGapTop()`<br>
 Returns the space (in pixels) between the title and the previous item (the top of the `NavigationView`, the previous title, or the last subtitle of the previous group).
 
 * `getGapLeft()`<br>
-Returns the left indentation space (in pixels) for the text relative to the `NavigationView`.
+Returns the left indentation space (in pixels) for the title relative to the `NavigationView`.
 
 * `getGapBottom()`<br>
 Returns the space (in pixels) between the title text and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
 
 * `getGapRight()`<br>
-Returns the right indentation space (in pixels) for the text relative to the `NavigationView`.
+Returns the right indentation space (in pixels) for the title relative to the `NavigationView`.
 
 * `getFont()`<br>
 Returns the title's `Font`.
@@ -517,6 +517,190 @@ titleAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
 </blockquote>
 </details>
 
+<details>
+<summary><b>NavSubtitleAttributes</b></summary><br>
+
+Subtitle attributes of `NavigationView`.
+
+<blockquote>
+<details>
+<summary><b>Fields</b></summary>
+
+* `String foreground`<br>
+ Represents the hexadecimal representation of the foreground color for the subtitle.
+
+* `String background`<br>
+Represents the hexadecimal representation of the background color for the subtitle.
+
+* `String selectedForeground`<br>
+Represents the hexadecimal representation of the subtitle's selected item foreground color. This foreground color is used to indicate which subtitle is selected when a user clicks it. 
+
+* `String selectedBackground`<br>
+Represents the hexadecimal representation of the subtitle's selected item background color. This background color is used to indicate which subtitle is selected when a user clicks it.
+
+* `String hoverForeground`<br>
+Represents the hexadecimal representation of the subtitle's hover foreground color. This color is used to highlight the subtitle by changing its foreground when the mouse hovers over its area.
+
+* `String hoverBackground`<br>
+Represents the hexadecimal representation of the subtitle's hover background color. This color is used to highlight the subtitle by changing its background when the mouse hovers over its area.
+
+* `TextPosition textPosition`<br>
+The text position of the subtitles. Can be either `TextPosition.LEFT` (subtitle followed by the icon) or `TextPosition.RIGHT` (icon followed by the subtitle).
+
+* `int iconTextGap`<br>
+The space between the subtitle and the icon.
+
+* `int gapTop`<br>
+The space between the subtitle and the item above it.
+
+* `int gapLeft`<br>
+Left indentation space for the subtitle relative to the `NavigationView`.
+
+* `int gapBottom`<br>
+The space between the subtitle and the item below it.
+
+* `int gapRight`<br>
+The right indentation space for the subtitle relative to the `NavigationView`.
+
+* `String fontFamily`<br>
+ The font family of the subtitle.
+
+* `int fontStyle`<br>
+The font style of the subtitle.
+
+* `int fontSize`<br>
+The font size of the subtitle.
+
+</details>
+
+<details>
+<summary><b>setter methods</b></summary>
+	
+* `setForeground(Color foreground)`<br>
+ Takes the `foreground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setBackground(Color background)`<br>
+Takes the `background` object as a parameter and coverts it to a hexadecimal code.
+
+* `setSelectedForeground(Color selectedBackground)`<br>
+Takes the `selectedForeground` object as a parameter and converts it to a hexadecimal code.
+
+* `setSelectedBackground(Color selectedForeground)`<br>
+ Takes the `selectedBackground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setHoverForeground(Color hoverForeground)`<br>
+Takes the `hoverForeground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setHoverBackground(Color hoverBackground)`<br>
+Takes the `hoverBackground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setTextPosition(TextPosition textPosition)`<br>
+ Sets the the position of the subtitle.
+
+* `setIconTextGap(int iconTextGap)`<br>
+Sets the space (in pixels) between subtitle and icon.
+
+* `setGapTop(int gapTop)`<br>
+Sets the space (in pixels) between the subtitle and the previous item (the current title of the same group, or previous subtitle of the same group).
+
+* `setGapLeft(int gapLeft)`<br>
+Sets the left indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `setGapBottom(int gapBottom)`<br>
+Sets the space (in pixels) between the subtitle and the next item (the next subtitle of the same group, the next title of the next group, or the bottom of the `NavigationView`).
+
+* `setGapRight(int gapRight)`<br>
+Sets the right indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `setFont(Font font)`<br>
+Takes the `Font` object as a parameter and sets the following fields: `fontFamily`, `fontStyle`, and `fontSize`.
+
+* `setFontFamily(String fontFamily)`<br>
+Sets the `fontFamily` independently of the font configuration method described above (`setFont(Font font)`).
+
+* `setFontStyle(int fontStyle)`<br>
+Sets the `fontStyle` independently of the font configuration method described above (`setFont(Font font)`).
+
+* `setFontSize(int fontSize)`<br>
+Sets the `fontSize` independently of the font configuration method described above (`setFont(Font font)`).
+
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+	
+* `getForeground()`<br>
+ Returns the foreground color of the subtitle.
+
+* `getBackground()`<br>
+Returns the background color of the subtitle.
+
+* `getSelectedForeground()`<br>
+Returns the foreground color of the selected subtitle.
+
+* `getSelectedBackground()`<br>
+Returns the background color of the selected subtitle.
+
+* `getHoverForeground()`<br>
+Returns the hover foreground color of the subtitle.
+
+* `getHoverBackground()`<br>
+Returns the hover background color of the subtitle.
+
+* `getTextPosition()`<br>
+Returns the `TextPosition` of the subtitle according to its icon.
+
+* `getIconTextGap()`<br>
+Returns the space (in pixels) between subtitle and icon.
+
+* `getGapTop()`<br>
+Returns the space (in pixels) between the subtitle and the previous item (the title of the same group or the previous subtitle of the same group).
+
+* `getGapLeft()`<br>
+Returns the left indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `getGapBottom()`<br>
+Returns the space (in pixels) between the subtitle and the next item (the next subtitle of the same group, the next title of the next group, or the bottom of the `NavigationView`).
+
+* `getGapRight()`<br>
+Returns the right indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `getFont()`<br>
+Returns the subtitle's `Font`.
+
+* `getFontFamily()`<br>
+Returns the font family of the subtitle's `Font`.
+
+* `getFontStyle()`<br>
+Returns the font style of the subtitle's `Font`.
+
+* `getFontSize()`<br>
+Returns the font size of the subtitle's `Font`.
+
+</details>
+
+<details>
+<summary><b>Create NavSubtitleAttributes</b></summary><br>
+	
+```create
+NavSubtitleAttributes subAttr = new NavSubtitleAttributes();
+
+subAttr.setForeground(new Color(150,225,150));
+subAttr.setBackground(new Color(41, 41, 41));
+subAttr.setSelectedForeground(new Color(190,200,190));
+subAttr.setSelectedBackground(new Color(15, 75, 15));
+subAttr.setHoverBackground(new Color(250,250,250));
+subAttr.setHoverForeground(new Color(75, 75, 55));
+subAttr.setTextPosition(TextPosition.RIGHT);
+subAttr.setIconTextGap(5);
+subAttr.setGapTop(5);
+subAttr.setGapLeft(10);
+subAttr.setGapBottom(5);
+subAttr.setGapRight(10);
+subAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));;
+```
+</blockquote>
+</details>
 
 </blockquote>
 
