@@ -812,7 +812,9 @@ NavStyleManager.createUserTheme(myStyle, "my_theme");
 
 <details>
 <summary><b>3. Set a theme</b></summary><br>
-	
+
+<blockquote>
+
 You can use either the theme ID or the theme name to apply a theme (supported for both system and user-defined themes).	<br>
 	
 * Use theme id to set a theme:
@@ -834,6 +836,7 @@ The selected system theme's ID is stored in Java Preferences and will be automat
 > **Note:** Pre-defined system theme IDs are 0-indexed (ranging from 0 to 3). User-defined theme IDs start from 4 and increment sequentially.
 
 </details>
+</blockquote>
 </details>
 
 ## Managers
