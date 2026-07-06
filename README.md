@@ -277,7 +277,7 @@ container.add(nav);
 </details>
 
 <details>
-<summary><b>2. Create a theme</b></summary><br>
+<summary><b>2. Create a user theme</b></summary><br>
 
 <blockquote>
 	
@@ -852,6 +852,79 @@ The selected system theme's ID is stored in Java Preferences and will be automat
 </blockquote>
 </details>
 
+## Theme Operations
+<details>
+<summary><b>1. Create a User Theme</b></summary>
+<br>
+<blockquote>
+	
+Creates a theme with the given attributes and associates it with the specified name.<br>
+
+```create
+NavStyleManager.createUserTheme(style, "my_theme");
+```
+> **Note:** This method also sets the created theme as the selected theme.
+
+</blockquote>
+</details>
+
+<details>
+<summary><b>2. Remove a User Theme</b></summary>
+<br>
+<blockquote>
+	
+Removes and deletes the theme with the specified name from Java Preferences.<br>
+
+```create
+NavStyleManager.removeUserTheme("my_theme");
+```
+> **Note:** This method also sets the default dark system theme as the selected theme.
+
+</blockquote>
+</details>
+
+<details>
+<summary><b>3. Rename a User Theme</b></summary>
+<br>
+<blockquote>
+	
+Renames an existing user theme and updates the user theme list in Java Preferences.<br>
+
+```create
+NavStyleManager.renameUserTheme("my_theme", "myDarkTheme");
+```
+</blockquote>
+</details>
+
+<details>
+<summary><b>4. Duplicate a Theme</b></summary>
+<br>
+<blockquote>
+	
+Duplicates the theme with a new name, allowing to modify its attributes without creating a new theme from scratch.<br>
+
+```create
+NavStyle style = NavStyleManager.duplicateTheme("myDarkTheme", "duplicated_theme");
+```
+</blockquote>
+</details>
+
+<details>
+<summary><b>5. Update a User Theme</b></summary>
+<br>
+<blockquote>
+	
+Updates specified user theme with the new `NavStyle`.<br>
+
+```create
+NavStyleManager.updateUserTheme("duplicated_theme", newStyle);
+```
+</blockquote>
+</details>
+
+</blockquote>
+</details>
+
 ## Managers
 
 <details>
@@ -950,6 +1023,9 @@ Gets the name of the selected theme.<br>
 
 * `getThemeById(int themeId)`<br>
 Gets the theme that matches the specified `themeId`.<br>
+
+* `getTheme(String name)`<br>
+Gets the theme that matches the specified name.<br>
 
 * `getUserTheme(String name)`<br>
 Gets the user theme that matches the specified name.<br>
