@@ -859,7 +859,7 @@ The selected system theme's ID is stored in Java Preferences and will be automat
 <br>
 <blockquote>
 	
-<code>NavStateManager</code> is responsible for managing and persisting click behaviors and selection states across all navigation items.<br>
+`NavStateManager` is responsible for managing and persisting click behaviors and selection states across all navigation items.<br>
 
 * **Works in real time:** Selection states are updated and synchronized instantly upon each click.
 * **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
