@@ -787,6 +787,7 @@ NavSubtitleAttributes subAttr = createSubAttributes();
 NavStyle myStyle = new NavStyle(bodyAttr, titleAttr, subAttr);
 ```
 </blockquote>
+
 </details>
 
 <details>
