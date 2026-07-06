@@ -18,7 +18,7 @@ public class NavStyleManager {
 
     private static final Preferences PREF =
             Preferences.userNodeForPackage(NavStyleManager.class);
-    private static final String SELECTED_THEME_ID = "nav.theme";
+    private static final String SELECTED_THEME_ID = "nav.theme.selected";
     private static final String USER_THEME_LIST = "nav.theme.user.list";
     private static final String USER_THEME = "nav.theme.user.";
     private static final int TOTAL_DEFAULT_THEMES = 4;

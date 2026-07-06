@@ -86,6 +86,7 @@ public class NavItemView extends JPanel {
         this.titleIndex = titleIndex;
 
         style = NavStyleManager.getSelectedTheme();
+
         titleStyle = style.getTitleAttributes();
         subStyle = style.getSubtitleAttributes();
         canCollapse = NavStateManager.subsCanCollapse(navName);
