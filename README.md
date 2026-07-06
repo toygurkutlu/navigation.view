@@ -247,6 +247,41 @@ container.add(nav);
 </blockquote>
 </details>
 
+## Collapse Mechanism
+
+<details>
+<summary><b>1. NavigationView Collapse Mechanism</b></summary>
+<blockquote><br>
+	
+* Works for both `ListView` and `Tree-like` appearances.
+* Enabled by default.
+* The status can be changed after initializing the `NavigationView`.
+
+```create
+NavigationView navView = new NavigationView("myNav", myNavItems);
+navView.setNavCanCollapse(false);
+```
+
+</blockquote>
+</details>
+
+<details>
+<summary><b>2. Subtitle Collapse Mechanism</b></summary>
+
+<blockquote><br>
+
+* Works only with the `ListView` appearances.
+* Enabled by default.
+* The status can be changed after initializing the `NavigationView`.
+
+```create
+NavigationView navView = new NavigationView("myNav", myNavItems);
+navView.setSubsCanCollapse(false);
+```
+
+</blockquote>
+</details>
+
 ## Customizing NavigationView Appearance
 
 * The color preferences of the `NavigationView` can be changed by using themes.
