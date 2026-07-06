@@ -519,7 +519,7 @@ private NavTitleAttributes createTitleAttributes(){
      attr.setGapRight(5);
      attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
         
-        return attr;
+     return attr;
 }
 ```
 </blockquote>
