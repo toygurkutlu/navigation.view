@@ -13,6 +13,7 @@ package com.kutlu;
  * @see NavSubtitleAttributes
  */
 public class NavStyle {
+
     private NavAttributes navAttributes;
     private NavTitleAttributes titleAttributes;
     private NavSubtitleAttributes subtitleAttributes;

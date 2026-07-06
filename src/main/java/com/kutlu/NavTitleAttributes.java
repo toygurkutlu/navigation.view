@@ -17,10 +17,10 @@ public class NavTitleAttributes extends NavTextAttributes {
 
     private String foreground;
     private String background;
-    private String selectedBackground;
     private String selectedForeground;
-    private String hoverBackground;
+    private String selectedBackground;
     private String hoverForeground;
+    private String hoverBackground;
     private TextPosition textPosition;
     private int iconTextGap;
     private int gapTop;
@@ -70,28 +70,6 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the background color of selected item.
-     *
-     * @return The selected item's background color.
-     * @apiNote This background color is used to indicate which item is selected when a user clicks it.
-     */
-    @Override
-    public Color getSelectedBackground() {
-        return NavHelper.hexToColor(selectedBackground);
-    }
-
-    /**
-     * Sets the background color of selected item.
-     *
-     * @param selectedBackground The selected item's background color.
-     * @apiNote • This background color is used to indicate which item is selected when a user clicks it.<br>
-     * • Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
-     */
-    public void setSelectedBackground(Color selectedBackground) {
-        this.selectedBackground = NavHelper.colorToHex(selectedBackground);
-    }
-
-    /**
      * Gets the foreground color of selected item.
      *
      * @return The selected item's foreground color.
@@ -114,26 +92,25 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the hover background color.
+     * Gets the background color of selected item.
      *
-     * @return The hover background color.
-     * @apiNote The {@code hoverBackground} color is used to highlight the title
-     * by changing its background when the mouse hovers over its area.
+     * @return The selected item's background color.
+     * @apiNote This background color is used to indicate which item is selected when a user clicks it.
      */
     @Override
-    public Color getHoverBackground() {
-        return NavHelper.hexToColor(hoverBackground);
+    public Color getSelectedBackground() {
+        return NavHelper.hexToColor(selectedBackground);
     }
 
     /**
-     * Sets the hover background color.
+     * Sets the background color of selected item.
      *
-     * @param hoverBackground The hover background color.
-     * @apiNote The {@code hoverBackground} color is used to highlight the title
-     * by changing its background when the mouse hovers over its area.
+     * @param selectedBackground The selected item's background color.
+     * @apiNote • This background color is used to indicate which item is selected when a user clicks it.<br>
+     * • Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
      */
-    public void setHoverBackground(Color hoverBackground) {
-        this.hoverBackground = NavHelper.colorToHex(hoverBackground);
+    public void setSelectedBackground(Color selectedBackground) {
+        this.selectedBackground = NavHelper.colorToHex(selectedBackground);
     }
 
     /**
@@ -160,6 +137,29 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
+     * Gets the hover background color.
+     *
+     * @return The hover background color.
+     * @apiNote The {@code hoverBackground} color is used to highlight the title
+     * by changing its background when the mouse hovers over its area.
+     */
+    @Override
+    public Color getHoverBackground() {
+        return NavHelper.hexToColor(hoverBackground);
+    }
+
+    /**
+     * Sets the hover background color.
+     *
+     * @param hoverBackground The hover background color.
+     * @apiNote The {@code hoverBackground} color is used to highlight the title
+     * by changing its background when the mouse hovers over its area.
+     */
+    public void setHoverBackground(Color hoverBackground) {
+        this.hoverBackground = NavHelper.colorToHex(hoverBackground);
+    }
+
+    /**
      * Gets the position of the text.
      *
      * @return Text's position (either {@code TextPosition.LEFT} or {@code TextPosition.RIGHT}).
@@ -172,7 +172,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the position of the Text.
+     * Sets the position of the Text.
      *
      * @param textPosition Text's position. Can be one of followings:<br>
      *                     • {@code TextPosition.LEFT} ({@code TEXT} then {@code ICON}),<br>
@@ -227,7 +227,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the left indentation space for the text relative to the NavigationView.
+     * Gets the left indentation space for the text relative to the {@code NavigationView}.
      *
      * @return The gap size in pixels.
      */
@@ -237,7 +237,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Sets the left indentation space for the text relative to the NavigationView.
+     * Sets the left indentation space for the text relative to the {@code NavigationView}.
      *
      * @param gapLeft The gap size in pixels.
      */
@@ -267,7 +267,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the right indentation space for the text relative to the NavigationView.
+     * Gets the right indentation space for the text relative to the {@code NavigationView}.
      *
      * @return The gap size in pixels.
      */
@@ -277,7 +277,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Sets the right indentation space for the text relative to the NavigationView.
+     * Sets the right indentation space for the text relative to the {@code NavigationView}.
      *
      * @param gapRight The gap size in pixels.
      */
@@ -345,7 +345,7 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the font style of the text.
+     * Gets the font size of the text.
      *
      * @return The font style of the text.
      */
@@ -353,7 +353,6 @@ public class NavTitleAttributes extends NavTextAttributes {
     public int getFontSize() {
         return fontStyle;
     }
-
 
     /**
      * Sets the font size of the text.

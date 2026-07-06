@@ -14,6 +14,7 @@ import java.awt.*;
  * @see NavTitleAttributes
  */
 public class NavSubtitleAttributes extends NavTextAttributes {
+
     private String foreground;
     private String background;
     private String selectedBackground;

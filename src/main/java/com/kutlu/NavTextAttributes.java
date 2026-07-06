@@ -6,6 +6,7 @@ import java.awt.*;
  * Common text attributes shared by both titles and subtitles.
  */
 public abstract class NavTextAttributes {
+
     public abstract Color getForeground();
     public abstract Color getBackground();
     public abstract Color getSelectedBackground();

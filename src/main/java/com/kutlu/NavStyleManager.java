@@ -15,6 +15,7 @@ import java.util.prefs.Preferences;
  * Either use pre-defined dark (or light) theme or create your own theme with available attributes.
  */
 public class NavStyleManager {
+
     private static final Preferences PREF =
             Preferences.userNodeForPackage(NavStyleManager.class);
     private static final String SELECTED_THEME_ID = "nav.theme";
@@ -73,7 +74,7 @@ public class NavStyleManager {
      * @apiNote The default value is {@code NavThemes.DARK}.
      */
     public static int getSelectedThemeId() {
-        return PREF.getInt(SELECTED_THEME_ID, NavThemes.DARK_INDEX);
+        return PREF.getInt(SELECTED_THEME_ID, NavThemes.DARK_THEME);
     }
 
     /**
@@ -102,7 +103,7 @@ public class NavStyleManager {
             PREF.remove(USER_THEME + themeName);
 
             if (names.isEmpty() || selectedId == removedId) {
-                PREF.putInt(SELECTED_THEME_ID, NavThemes.DARK_INDEX);
+                PREF.putInt(SELECTED_THEME_ID, NavThemes.DARK_THEME);
             }
 
             return true;
@@ -143,23 +144,45 @@ public class NavStyleManager {
      *
      * @param themeName    The name of the theme to clone.
      * @param newThemeName The new name for the cloned theme.
+     * @return The newly duplicated {@code NavStyle} object.
      */
-    public static void duplicateUserTheme(String themeName, String newThemeName) {
-        NavStyle theme = getUserTheme(themeName);
-        if (theme == null) return;
+    public static NavStyle duplicateTheme(String themeName, String newThemeName) {
+        NavStyle original = getTheme(themeName);
+        if (original == null) return null;
 
-        String[] arr = getUserThemeList();
-        List<String> names = new ArrayList<>(Arrays.asList(arr));
+        List<String> names = new ArrayList<>(Arrays.asList(getUserThemeList()));
 
-        if (names.contains(newThemeName)) return;
+        if (names.contains(newThemeName)) return null;
 
         names.add(newThemeName);
-
         PREF.put(USER_THEME_LIST, String.join(",", names));
-        PREF.put(USER_THEME + newThemeName, GSON.toJson(theme, NavStyle.class));
+
+        PREF.put(USER_THEME + newThemeName, GSON.toJson(original, NavStyle.class));
 
         int id = getUserThemeId(newThemeName);
         if (id != -1) PREF.putInt(SELECTED_THEME_ID, id);
+
+        return getUserTheme(newThemeName);
+    }
+
+    /**
+     * Updates the specified theme with a new {@code NavStyle}.
+     *
+     * @param themeName The name of the theme to update.
+     * @param style     The new {@code NavStyle} object to apply to the theme.
+     * @return {@code true} if the theme was successfully updated; {@code false} otherwise.
+     */
+    public static boolean updateUserTheme(String themeName, NavStyle style) {
+        if (style == null) return false;
+
+        if (!userListContains(themeName)) return false;
+
+        PREF.put(USER_THEME + themeName, GSON.toJson(style, NavStyle.class));
+
+        int id = getUserThemeId(themeName);
+        if (id != -1) PREF.putInt(SELECTED_THEME_ID, id);
+
+        return true;
     }
 
     /**
@@ -274,6 +297,27 @@ public class NavStyleManager {
     public static NavStyle getUserTheme(String name) {
         String json = PREF.get(USER_THEME + name, null);
         return json != null ? GSON.fromJson(json, NavStyle.class) : null;
+    }
+
+    /**
+     * Gets the theme that matches the specified name.
+     *
+     * @param name The name of the theme.
+     * @return The {@code NavStyle} object representing the user-defined theme, or {@code null} if no match is found.
+     */
+    public static NavStyle getTheme(String name) {
+        String[] all = getAllThemeList();
+        int id = Arrays.asList(all).indexOf(name);
+
+        if (id == -1) {
+            return null;
+        }
+
+        if (id < TOTAL_DEFAULT_THEMES) {
+            return getSystemTheme(id);
+        }
+
+        return getUserTheme(name);
     }
 
     /**

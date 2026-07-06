@@ -6,8 +6,9 @@ import java.awt.image.BufferedImage;
 
 /**
  * Helper class that contains type converters.
- * */
+ */
 public class NavHelper {
+
     /**
      * Changes the color of the specified icon.
      *

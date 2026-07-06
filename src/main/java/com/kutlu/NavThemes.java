@@ -13,13 +13,14 @@ import java.awt.*;
  * @see NavStyleManager
  */
 public class NavThemes {
-    public static final int DARK_INDEX = 0;
+
+    public static final int DARK_THEME = 0;
     public static String DARK ="Dark";
-    public static final int DARK_ORANGE_INDEX = 1;
+    public static final int DARK_ORANGE_THEME = 1;
     public static String DARK_ORANGE ="Dark Orange";
-    public static final int LIGHT_INDEX = 2;
+    public static final int LIGHT_THEME = 2;
     public static String LIGHT ="Light";
-    public static final int IVORY_INDEX = 3;
+    public static final int IVORY_THEME = 3;
     public static String IVORY ="Ivory";
 
     /**
@@ -33,6 +34,8 @@ public class NavThemes {
         style.setTitleAttributes(getDarkTitleAttributes());
         style.setSubtitleAttributes(getDarkSubtitleAttributes());
 
+        NavStyleManager.setSelectedTheme(NavThemes.IVORY);
+
         return style;
     }
     private static NavAttributes getDarkNavAttributes(){
@@ -40,12 +43,9 @@ public class NavThemes {
 
         Color collapseColor = new Color(175, 175, 195);
 
-        int iconSize = 24;
-
         attr.setBackground(new Color(41, 41, 41));
         attr.setCollapseIconsColor(collapseColor);
         attr.setCollapseIconsColored(false);
-        attr.setCollapseIconsSize(iconSize);
 
         return attr;
     }
@@ -109,12 +109,10 @@ public class NavThemes {
         NavAttributes attr = new NavAttributes();
 
         Color collapseColor = new Color(250, 250, 250);
-        int iconSize = 24;
 
         attr.setBackground(new Color(90, 100, 150));
         attr.setCollapseIconsColor(collapseColor);
         attr.setCollapseIconsColored(false);
-        attr.setCollapseIconsSize(iconSize);
 
         return attr;
     }
@@ -177,12 +175,9 @@ public class NavThemes {
 
         Color collapseColor = new Color(155, 75, 45);
 
-        int iconSize = 24;
-
         attr.setBackground(new Color(25, 25, 25));
         attr.setCollapseIconsColor(collapseColor);
         attr.setCollapseIconsColored(false);
-        attr.setCollapseIconsSize(iconSize);
 
         return attr;
     }
@@ -249,12 +244,9 @@ public class NavThemes {
 
         Color collapseColor = new Color(200, 200, 175);
 
-        int iconSize = 24;
-
         attr.setBackground(new Color(45, 50, 50));
         attr.setCollapseIconsColor(collapseColor);
         attr.setCollapseIconsColored(false);
-        attr.setCollapseIconsSize(iconSize);
 
         return attr;
     }

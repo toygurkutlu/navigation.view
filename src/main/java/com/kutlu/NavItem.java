@@ -14,6 +14,7 @@ import javax.swing.*;
  * </p>
  */
 public class NavItem {
+
     private String title;
     private Icon titleIcon;
     private String[] subtitles;

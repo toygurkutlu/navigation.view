@@ -13,10 +13,10 @@ import java.awt.*;
  * @see NavSubtitleAttributes
  */
 public class NavAttributes {
+
     private String background;
     private String collapseIconsColor;
     private boolean isCollapseIconsColored;
-    int collapseIconsSize;
 
     /**
      * Gets the background color of the {@code NavigationView}.
@@ -72,23 +72,5 @@ public class NavAttributes {
      */
     public void setCollapseIconsColored(boolean isCollapsedIconsColored) {
         this.isCollapseIconsColored = isCollapsedIconsColored;
-    }
-
-    /**
-     * Gets the size of the collapse icons.
-     *
-     * @return The size of the collapse icons in pixels.
-     */
-    public int getCollapseIconsSize() {
-        return collapseIconsSize;
-    }
-
-    /**
-     * Sets the size of the collapse icons.
-     *
-     * @param collapseIconsSize The size of the collapse icons in pixels.
-     */
-    public void setCollapseIconsSize(int collapseIconsSize) {
-        this.collapseIconsSize = collapseIconsSize;
     }
 }

@@ -14,6 +14,7 @@ import java.util.prefs.Preferences;
  * </p>
  */
 public class NavStateManager {
+
     private static final Preferences PREF = Preferences.userNodeForPackage(NavStateManager.class);
     private static final String NAV_COLLAPSE = ".collapse";
     private static final String CAN_COLLAPSE = ".can.collapse";

@@ -15,6 +15,7 @@ import java.awt.event.MouseEvent;
  * @see NavItem
  */
 public class NavItemView extends JPanel {
+
     private final NavItem navItem;
     private final String navName;
     private JPanel headerPanel;
