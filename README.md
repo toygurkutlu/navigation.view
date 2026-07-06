@@ -938,7 +938,6 @@ NavStyleManager.updateUserTheme("duplicated_theme", newStyle);
 * **Automated storage:** States are securely stored in the user node of Java Preferences (`NavStateManager.class`).
 * **Zero config:** No user intervention or manual saving is required.
 
-
 <details>
 <summary><b>setter methods</b></summary>
 <blockquote>
@@ -1075,8 +1074,39 @@ Renames the specified theme with a new name and automatically updates its corres
 
 * `duplicateUserTheme(String themeName, String newThemeName)`<br>
 Duplicates the specified user theme and creates a new one with a new name.
+
+* `updateUserTheme(String themeName, NavStyle style)`<br>
+Updates the specified theme with a new `NavStyle`.
 <blockquote>
 </details>
+
+</blockquote>
+</details>
+
+
+<details>
+<summary><b>3. NavHelper</b></summary>
+<br>
+<blockquote>
+	
+`NavHelper` is responsible for converting a `Color` object to a hexadecimal code (and vice versa) and recoloring icons with a new color.
+
+<details>
+<summary><b>methods</b></summary>
+<blockquote>
+	
+* `recolorIcon(Icon icon, Color color)`<br>
+Changes the color of the given icon and returns it back.
+
+* `colorToHex(Color color)`<br>
+Converts a `Color` object to its hexadecimal string representation.
+
+* `hexToColor(String colorHex)`<br>
+Converts a hexadecimal string representation back to a `Color` object.
+
+  </blockquote>
+</details>
+
 
 </blockquote>
 </details>
