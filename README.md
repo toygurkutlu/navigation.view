@@ -322,11 +322,15 @@ Returns the collapse icons color of the `NavigationView`.
 <summary><b>Create NavAttributes</b></summary><br>
 	
 ```create
-NavAttributes navAttr = new NavAttributes();
+private NavAttributes createNavAttributes(){
+    NavAttributes attr = new NavAttributes();
+
+    attr.setBackground(new Color(100,100,100));
+    attr.setCollapseIconsColored(true);
+    attr.setCollapseIconsColor(new Color(200,175,200));
         
-navAttr.setBackground(new Color(100,100,100));
-navAttr.setCollapseIconsColored(true);
-navAttr.setCollapseIconsColor(new Color(200,175,200));
+    return attr;
+}
 ```
 </blockquote>
 </details>
@@ -498,21 +502,25 @@ Returns the font size of the title's `Font`.
 <summary><b>Create NavTitleAttributes</b></summary><br>
 	
 ```create
-NavTitleAttributes titleAttr = new NavTitleAttributes();
+private NavTitleAttributes createTitleAttributes(){
+    NavTitleAttributes attr = new NavTitleAttributes();
 
-titleAttr.setForeground(new Color(150,225,150));
-titleAttr.setBackground(new Color(41, 41, 41));
-titleAttr.setSelectedForeground(new Color(190,200,190));
-titleAttr.setSelectedBackground(new Color(5, 5, 5));
-titleAttr.setHoverBackground(new Color(85,50,85));
-titleAttr.setHoverForeground(new Color(41, 41, 41));
-titleAttr.setTextPosition(TextPosition.RIGHT);
-titleAttr.setIconTextGap(5);
-titleAttr.setGapTop(5);
-titleAttr.setGapLeft(5);
-titleAttr.setGapBottom(5);
-titleAttr.setGapRight(5);
-titleAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
+    attr.setForeground(new Color(150,225,150));
+    attr.setBackground(new Color(41, 41, 41));
+    attr.setSelectedForeground(new Color(190,200,190));
+    attr.setSelectedBackground(new Color(5, 5, 5));
+    attr.setHoverBackground(new Color(85,50,85));
+    attr.setHoverForeground(new Color(41, 41, 41));
+    attr.setTextPosition(TextPosition.RIGHT);
+    attr.setIconTextGap(5);
+    attr.setGapTop(5);
+    attr.setGapLeft(5);
+    attr.setGapBottom(5);
+    attr.setGapRight(5);
+    attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
+        
+        return attr;
+}
 ```
 </blockquote>
 </details>
@@ -683,6 +691,125 @@ Returns the font size of the subtitle's `Font`.
 <summary><b>Create NavSubtitleAttributes</b></summary><br>
 	
 ```create
+private NavSubtitleAttributes createSubAttributes(){
+    NavSubtitleAttributes attr = new NavSubtitleAttributes();
+
+    attr.setForeground(new Color(150,225,150));
+    attr.setBackground(new Color(41, 41, 41));
+    attr.setSelectedForeground(new Color(190,200,190));
+    attr.setSelectedBackground(new Color(15, 75, 15));
+    attr.setHoverBackground(new Color(250,250,250));
+    attr.setHoverForeground(new Color(75, 75, 55));
+    attr.setTextPosition(TextPosition.RIGHT);
+    attr.setIconTextGap(5);
+    attr.setGapTop(5);
+    attr.setGapLeft(10);
+    attr.setGapBottom(5);
+    attr.setGapRight(10);
+    attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));
+
+    return attr;
+}
+```
+</blockquote>
+</details>
+
+
+
+
+
+
+
+<details>
+<summary><b>NavStyle</b></summary><br>
+
+The theme of the `NavigationView`.
+
+<blockquote>
+<details>
+<summary><b>Fields</b></summary>
+
+* `NavAttributes navAttributes`<br>
+Body attributes of the `NavigationView`.
+
+* `NavTitleAttributes titleAttributes`<br>
+Title attributes of the `NavigationView`.
+
+* `NavSubtitleAttributes subtitleAttributes`<br>
+  Subtitle attributes of the `NavigationView`.
+
+</details>
+
+<details>
+<summary><b>setter methods</b></summary>
+	
+* `setNavAttributes(NavAttributes navAttributes)`<br>
+ Takes the `foreground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setTitleAttributes(NavTitleAttributes titleAttributes)`<br>
+Takes the `background` object as a parameter and coverts it to a hexadecimal code.
+
+* `setSubtitleAttributes(NavSubtitleAttributes subtitleAttributes)`<br>
+Takes the `selectedForeground` object as a parameter and converts it to a hexadecimal code.
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+	
+* `getNavAttributes()`<br>
+ Returns the foreground color of the subtitle.
+
+* `getTitleAttributes()`<br>
+Returns the background color of the subtitle.
+
+* `getSubtitleAttributes()`<br>
+Returns the foreground color of the selected subtitle.
+
+* `getSelectedBackground()`<br>
+Returns the background color of the selected subtitle.
+
+* `getHoverForeground()`<br>
+Returns the hover foreground color of the subtitle.
+
+* `getHoverBackground()`<br>
+Returns the hover background color of the subtitle.
+
+* `getTextPosition()`<br>
+Returns the `TextPosition` of the subtitle according to its icon.
+
+* `getIconTextGap()`<br>
+Returns the space (in pixels) between subtitle and icon.
+
+* `getGapTop()`<br>
+Returns the space (in pixels) between the subtitle and the previous item (the title of the same group or the previous subtitle of the same group).
+
+* `getGapLeft()`<br>
+Returns the left indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `getGapBottom()`<br>
+Returns the space (in pixels) between the subtitle and the next item (the next subtitle of the same group, the next title of the next group, or the bottom of the `NavigationView`).
+
+* `getGapRight()`<br>
+Returns the right indentation space (in pixels) for the subtitle relative to the `NavigationView`.
+
+* `getFont()`<br>
+Returns the subtitle's `Font`.
+
+* `getFontFamily()`<br>
+Returns the font family of the subtitle's `Font`.
+
+* `getFontStyle()`<br>
+Returns the font style of the subtitle's `Font`.
+
+* `getFontSize()`<br>
+Returns the font size of the subtitle's `Font`.
+
+</details>
+
+<details>
+<summary><b>Create NavSubtitleAttributes</b></summary><br>
+	
+```create
 NavSubtitleAttributes subAttr = new NavSubtitleAttributes();
 
 subAttr.setForeground(new Color(150,225,150));
@@ -701,6 +828,11 @@ subAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 14));;
 ```
 </blockquote>
 </details>
+
+
+
+
+
 
 </blockquote>
 
