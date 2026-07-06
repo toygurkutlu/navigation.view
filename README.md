@@ -258,14 +258,22 @@ container.add(nav);
 <summary><b>1. Pre-defined system themes</b></summary>
 	<blockquote>
 	There are 4 different pre-defined system themes:<br>
-	<br>
-	<ul>
-	<li><code>NavThemes.Dark()</code><br></li>
-	<li><code>NavThemes.DarkOrange()</code><br></li>
-	<li><code>NavThemes.Light()</code><br></li>
-	<li><code>NavThemes.Ivory()</code></li>
-	</ul>
-	</blockquote>
+		
+<ul>
+<li>
+	
+`NavThemes.Dark()`<br></li>
+<li>
+
+`NavThemes.DarkOrange()`<br></li>
+<li>
+	
+`NavThemes.Light()`<br></li>
+<li>
+	
+`NavThemes.Ivory()`</li></ul>
+
+</blockquote>
 </details>
 
 <details>
@@ -849,6 +857,8 @@ The selected system theme's ID is stored in Java Preferences and will be automat
 <details>
 <summary><b>1. NavStateManager</b></summary>
 <br>
+<blockquote>
+	
 <code>NavStateManager</code> is responsible for managing and persisting click behaviors and selection states across all navigation items.<br>
 
 * **Works in real time:** Selection states are updated and synchronized instantly upon each click.
@@ -897,12 +907,15 @@ Gets the selected subtitle's index from the `NavigationView` with the specified 
 Gets the collapse status of the specified `NavigationView` that matches the given `titleIndex`.
   </blockquote>
 </details>
+</blockquote>
 </details>
 
 <details>
 <summary><b>2. NavStyleManager</b></summary>
 <br>
-<code>NavStyleManager</code> is responsible for managing, applying, and persisting color attributes.<br><br>
+<blockquote>
+		
+`NavStyleManager` is responsible for managing, applying, and persisting color attributes.<br><br>
 
 <details>
 <summary><b>setter methods</b></summary>
@@ -967,9 +980,9 @@ Gets the pre-defined system theme.<br>
 
 * `getDefaultTheme()`<br>
 Gets the pre-defined default Dark Theme.<br>
+</blockquote>
 
 </details>
-</blockquote>
 
 <details>
 <summary><b>other methods</b></summary>
@@ -986,6 +999,7 @@ Renames the specified theme with a new name and automatically updates its corres
 
 * `duplicateUserTheme(String themeName, String newThemeName)`<br>
 Duplicates the specified user theme and creates a new one with a new name.
+<blockquote>
 </details>
 
 </blockquote>
