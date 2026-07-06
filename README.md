@@ -323,13 +323,13 @@ Returns the collapse icons color of the `NavigationView`.
 	
 ```create
 private NavAttributes createNavAttributes(){
-    NavAttributes attr = new NavAttributes();
+     NavAttributes attr = new NavAttributes();
 
-    attr.setBackground(new Color(100,100,100));
-    attr.setCollapseIconsColored(true);
-    attr.setCollapseIconsColor(new Color(200,175,200));
+     attr.setBackground(new Color(100,100,100));
+     attr.setCollapseIconsColored(true);
+     attr.setCollapseIconsColor(new Color(200,175,200));
         
-    return attr;
+     return attr;
 }
 ```
 </blockquote>
@@ -503,21 +503,21 @@ Returns the font size of the title's `Font`.
 	
 ```create
 private NavTitleAttributes createTitleAttributes(){
-    NavTitleAttributes attr = new NavTitleAttributes();
-
-    attr.setForeground(new Color(150,225,150));
-    attr.setBackground(new Color(41, 41, 41));
-    attr.setSelectedForeground(new Color(190,200,190));
-    attr.setSelectedBackground(new Color(5, 5, 5));
-    attr.setHoverBackground(new Color(85,50,85));
-    attr.setHoverForeground(new Color(41, 41, 41));
-    attr.setTextPosition(TextPosition.RIGHT);
-    attr.setIconTextGap(5);
-    attr.setGapTop(5);
-    attr.setGapLeft(5);
-    attr.setGapBottom(5);
-    attr.setGapRight(5);
-    attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
+     NavTitleAttributes attr = new NavTitleAttributes();
+ 
+     attr.setForeground(new Color(150,225,150));
+     attr.setBackground(new Color(41, 41, 41));
+     attr.setSelectedForeground(new Color(190,200,190));
+     attr.setSelectedBackground(new Color(5, 5, 5));
+     attr.setHoverBackground(new Color(85,50,85));
+     attr.setHoverForeground(new Color(41, 41, 41));
+     attr.setTextPosition(TextPosition.RIGHT);
+     attr.setIconTextGap(5);
+     attr.setGapTop(5);
+     attr.setGapLeft(5);
+     attr.setGapBottom(5);
+     attr.setGapRight(5);
+     attr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
         
         return attr;
 }
