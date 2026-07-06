@@ -253,6 +253,7 @@ NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 
 <details>
 <summary><b>1. Pre-defined system themes</b></summary>
+	<blockquote>
 	There are 4 different pre-defined system themes:<br>
 	<br>
 	<ul>
@@ -261,6 +262,7 @@ NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 	<li><code>NavThemes.Light()</code><br></li>
 	<li><code>NavThemes.Ivory()</code></li>
 	</ul>
+	</blockquote>
 </details>
 
 <details>
