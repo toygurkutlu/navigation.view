@@ -257,7 +257,7 @@ container.add(nav);
 * Enabled by default.
 * The status can be changed after initializing the `NavigationView`.
 
-```gradle
+```create
 NavigationView navView = new NavigationView("myNav", myNavItems);
 navView.setNavCanCollapse(false);
 ```
