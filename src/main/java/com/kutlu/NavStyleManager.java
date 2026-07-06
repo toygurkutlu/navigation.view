@@ -208,6 +208,7 @@ public class NavStyleManager {
      * @return The theme corresponding to the {@code SELECTED_THEME_ID}, or {@code null} if no match is found.
      */
     public static NavStyle getSelectedTheme() {
+        System.out.println("Selected Theme Id: "+ getSelectedThemeId());
         return getThemeById(getSelectedThemeId());
     }
 

@@ -110,6 +110,11 @@ public class NavigationView extends JPanel {
         init();
     }
 
+    public void setTheme(int themeId){
+
+
+    }
+
     /**
      * Sets the icon for the collapsed state of the {@code NavigationView}.
      *
