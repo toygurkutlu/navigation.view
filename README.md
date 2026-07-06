@@ -265,6 +265,8 @@ NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 
 <details>
 <summary><b>2. Create a theme</b></summary><br>
+
+<blockquote>
 	
 You can create a new theme with creating your own `NavStyle`. `NavStyle` object contains following 3 objects:<br>
 
@@ -273,10 +275,9 @@ You can create a new theme with creating your own `NavStyle`. `NavStyle` object 
 
 Body attributes of `NavigationView`.
 
-
-<details>
-<summary><b>Fields</b></summary><br>
 <blockquote>
+<details>
+<summary><b>Fields</b></summary>
 	
 * `String background`
  Represents the hexadecimal code representation of the background color for the `NavigationView`. 
@@ -290,8 +291,7 @@ Represents the hexadecimal representation of the colors for the collapse and exp
 </details>
 
 <details>
-<summary><b>setter methods</b></summary><br>
-<blockquote>
+<summary><b>setter methods</b></summary>
 	
 * `setBackground(Color background)`
  Takes the `background` object as a parameter and coverts it to a hexadecimal code.
@@ -305,8 +305,7 @@ Takes the `collapseIconsColor` object as a parameter and converts it to a hexade
 </details>
 
 <details>
-<summary><b>getter methods</b></summary><br>
-<blockquote>
+<summary><b>getter methods</b></summary>
 	
 * `getBackground()`
 Converts the hexadecimal code back to a `Color` object and returns it.
@@ -319,10 +318,170 @@ Converts the hexadecimal code back to a `Color` object and returns it.
 
 </details>
 
+<details>
+<summary><b>Create NavAttributes</b></summary><br>
+	
+```create
+NavAttributes navAttr = new NavAttributes();
+        
+navAttr.setBackground(new Color(100,100,100));
+navAttr.setCollapseIconsColored(true);
+navAttr.setCollapseIconsColor(new Color(200,175,200));
+```
+</blockquote>
+</details>
+
+
+<details>
+<summary><b>NavTitleAttributes</b></summary><br>
+
+Title attributes of `NavigationView`.
+
+<blockquote>
+<details>
+<summary><b>Fields</b></summary>
+
+* `String foreground`<br>
+ Represents the hexadecimal representation of the foreground color for the title.
+
+* `String background`<br>
+Represents the hexadecimal representation of the background color for the title.
+
+* `String selectedForeground`<br>
+Represents the hexadecimal representation of the title's selected item foreground color. This color is used to highlight the title by changing its foreground when the mouse hovers over its area. This foreground color is used to indicate which item is selected when a user clicks it. 
+
+* `String selectedBackground`<br>
+Represents the hexadecimal representation of the title's selected item background color. This background color is used to indicate which item is selected when a user clicks it. Note that if subtitles present, the Title's background color will only change if a subtitle is selected.
+
+* `String hoverForeground`<br>
+Represents the hexadecimal representation of the title's hover foreground color. 
+
+* `String hoverBackground`<br>
+Represents the hexadecimal representation of the title's hover background color. This color is used to highlight the title by changing its background when the mouse hovers over its area.
+
+* `TextPosition textPosition`<br>
+The text position of the title. Can be either `TextPosition.LEFT` (title followed by the icon) or `TextPosition.RIGHT` (icon followed by the title).
+
+* `int iconTextGap`<br>
+The space between the title and the icon.
+
+* `int gapTop`<br>
+The space between the title and the item above it.
+
+* `int gapLeft`<br>
+Left indentation space for the title relative to the `NavigationView`.
+
+* `int gapBottom`<br>
+The space between the title and the item below it.
+
+* `int gapRight`<br>
+The right indentation space for the text relative to the `NavigationView`.
+
+* `String fontFamily`<br>
+ The font family of the title.
+
+* `int fontStyle`<br>
+The font style of the title.
+
+* `int fontSize`<br>
+The font size of the title.
+
+</details>
+
+<details>
+<summary><b>setter methods</b></summary>
+	
+* `setForeground(Color foreground)`<br>
+ Takes the `foreground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setBackground(Color background)`<br>
+Takes the `background` object as a parameter and coverts it to a hexadecimal code.
+
+* `setSelectedForeground(Color selectedBackground)`<br>
+Takes the `selectedForeground` object as a parameter and converts it to a hexadecimal code.
+
+* `setSelectedBackground(Color selectedForeground)`<br>
+ Takes the `selectedBackground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setHoverForeground(Color hoverForeground)`<br>
+Takes the `hoverForeground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setHoverBackground(Color hoverBackground)`<br>
+Takes the `hoverBackground` object as a parameter and coverts it to a hexadecimal code.
+
+* `setTextPosition(TextPosition textPosition)`<br>
+ Sets the the position of the title.
+
+* `setIconTextGap(int iconTextGap)`<br>
+Sets the space between text and icon.
+
+* `setGapTop(int gapTop)`<br>
+Sets the space (in pixels) between the title and the previous item (the top of the `NavigationView`, the previous title, or the last subtitle of the previous group).
+
+* `setGapLeft(int gapLeft)`<br>
+Sets the left indentation space for the text relative to the `NavigationView`.
+
+* `setGapBottom(int gapBottom)`<br>
+Sets the space (in pixels) between the title text and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
+
+* `setGapRight(int gapRight)`<br>
+Sets the right indentation space for the text relative to the `NavigationView`.
+
+* `setFont(Font font)`<br>
+Takes the `Font` object as a parameter and sets the following fields: `fontFamily`, `fontStyle`, and `fontSize`.
+
+* `setFontFamily(String fontFamily)`<br>
+Sets the `fontFamily` independently of the font configuration method described above (`setFont(Font font)`).
+
+* `setFontStyle(int fontStyle)`<br>
+Sets the `fontStyle` independently of the font configuration method described above (`setFont(Font font)`).
+
+* `setFontSize(int fontSize)`<br>
+Sets the `fontSize` independently of the font configuration method described above (`setFont(Font font)`).
+
+</details>
+
+<details>
+<summary><b>getter methods</b></summary>
+	
+* `getBackground()`
+Converts the hexadecimal code back to a `Color` object and returns it.
+
+* `isCollapseIconsColored()`
+Returns `true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; returns `false` if they use their own original colors.
+
+* `getCollapseIconsColor()`
+Converts the hexadecimal code back to a `Color` object and returns it.
+
+</details>
+
+<details>
+<summary><b>Create NavTitleAttributes</b></summary><br>
+	
+```create
+NavAttributes navAttr = new NavAttributes();
+        
+navAttr.setBackground(new Color(100,100,100));
+navAttr.setCollapseIconsColored(true);
+navAttr.setCollapseIconsColor(new Color(200,175,200));
+```
+</blockquote>
+</details>
+
 
 </blockquote>
 
-</details>
+</details> <!--> </>
+
+
+
+
+
+
+
+
+
+
 
 <details>
 <summary><b>3. Set a theme</b></summary><br>
