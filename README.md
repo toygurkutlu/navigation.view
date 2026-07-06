@@ -308,13 +308,13 @@ Takes the `collapseIconsColor` object as a parameter and converts it to a hexade
 <summary><b>getter methods</b></summary>
 	
 * `getBackground()`
-Converts the hexadecimal code back to a `Color` object and returns it.
+Returns the background color of the `NavigationView`.
 
 * `isCollapseIconsColored()`
 Returns `true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; returns `false` if they use their own original colors.
 
 * `getCollapseIconsColor()`
-Converts the hexadecimal code back to a `Color` object and returns it.
+Returns the collapse icons color of the `NavigationView`.
 
 </details>
 
@@ -413,19 +413,19 @@ Takes the `hoverBackground` object as a parameter and coverts it to a hexadecima
  Sets the the position of the title.
 
 * `setIconTextGap(int iconTextGap)`<br>
-Sets the space between text and icon.
+Sets the space (in pixels) between text and icon.
 
 * `setGapTop(int gapTop)`<br>
 Sets the space (in pixels) between the title and the previous item (the top of the `NavigationView`, the previous title, or the last subtitle of the previous group).
 
 * `setGapLeft(int gapLeft)`<br>
-Sets the left indentation space for the text relative to the `NavigationView`.
+Sets the left indentation space (in pixels) for the text relative to the `NavigationView`.
 
 * `setGapBottom(int gapBottom)`<br>
 Sets the space (in pixels) between the title text and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
 
 * `setGapRight(int gapRight)`<br>
-Sets the right indentation space for the text relative to the `NavigationView`.
+Sets the right indentation space (in pixels) for the text relative to the `NavigationView`.
 
 * `setFont(Font font)`<br>
 Takes the `Font` object as a parameter and sets the following fields: `fontFamily`, `fontStyle`, and `fontSize`.
@@ -444,14 +444,53 @@ Sets the `fontSize` independently of the font configuration method described abo
 <details>
 <summary><b>getter methods</b></summary>
 	
-* `getBackground()`
-Converts the hexadecimal code back to a `Color` object and returns it.
+* `getForeground()`<br>
+ Returns the foreground color of the title.
 
-* `isCollapseIconsColored()`
-Returns `true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; returns `false` if they use their own original colors.
+* `getBackground()`<br>
+Returns the background color of the title.
 
-* `getCollapseIconsColor()`
-Converts the hexadecimal code back to a `Color` object and returns it.
+* `getSelectedForeground()`<br>
+Returns the foreground color of the selected title.
+
+* `getSelectedBackground()`<br>
+Returns the background color of the selected title.
+
+* `getHoverForeground()`<br>
+Returns the hover foreground color of the title.
+
+* `getHoverBackground()`<br>
+Returns the hover background color of the title.
+
+* `getTextPosition()`<br>
+Returns the `TextPosition` of the title according to its icon.
+
+* `getIconTextGap()`<br>
+Returns the space (in pixels) between text and icon.
+
+* `getGapTop()`<br>
+Returns the space (in pixels) between the title and the previous item (the top of the `NavigationView`, the previous title, or the last subtitle of the previous group).
+
+* `getGapLeft()`<br>
+Returns the left indentation space (in pixels) for the text relative to the `NavigationView`.
+
+* `getGapBottom()`<br>
+Returns the space (in pixels) between the title text and the next item (the next title, the first subtitle of the current group, or the bottom of the `NavigationView`).
+
+* `getGapRight()`<br>
+Returns the right indentation space (in pixels) for the text relative to the `NavigationView`.
+
+* `getFont()`<br>
+Returns the title's `Font`.
+
+* `getFontFamily()`<br>
+Returns the font family of the title's `Font`.
+
+* `getFontStyle()`<br>
+Returns the font style of the title's `Font`.
+
+* `getFontSize()`<br>
+Returns the font size of the title's `Font`.
 
 </details>
 
@@ -459,11 +498,21 @@ Converts the hexadecimal code back to a `Color` object and returns it.
 <summary><b>Create NavTitleAttributes</b></summary><br>
 	
 ```create
-NavAttributes navAttr = new NavAttributes();
-        
-navAttr.setBackground(new Color(100,100,100));
-navAttr.setCollapseIconsColored(true);
-navAttr.setCollapseIconsColor(new Color(200,175,200));
+NavTitleAttributes titleAttr = new NavTitleAttributes();
+
+titleAttr.setForeground(new Color(150,225,150));
+titleAttr.setBackground(new Color(41, 41, 41));
+titleAttr.setSelectedForeground(new Color(190,200,190));
+titleAttr.setSelectedBackground(new Color(5, 5, 5));
+titleAttr.setHoverBackground(new Color(85,50,85));
+titleAttr.setHoverForeground(new Color(41, 41, 41));
+titleAttr.setTextPosition(TextPosition.RIGHT);
+titleAttr.setIconTextGap(5);
+titleAttr.setGapTop(5);
+titleAttr.setGapLeft(5);
+titleAttr.setGapBottom(5);
+titleAttr.setGapRight(5);
+titleAttr.setFont(new Font("Sky Sans Medium Small Caps", Font.BOLD, 16));;
 ```
 </blockquote>
 </details>
