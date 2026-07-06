@@ -1075,8 +1075,14 @@ Renames the specified theme with a new name and automatically updates its corres
 
 * `duplicateUserTheme(String themeName, String newThemeName)`<br>
 Duplicates the specified user theme and creates a new one with a new name.
+
+* `updateUserTheme(String themeName, NavStyle style)`<br>
+Updates the specified theme with a new `NavStyle`.
 <blockquote>
 </details>
 
+
+
+updateUserTheme(String themeName, NavStyle style)
 </blockquote>
 </details>
