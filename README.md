@@ -247,9 +247,12 @@ container.add(nav);
 </blockquote>
 </details>
 
-## Customizing NavigationView
+## Customizing NavigationView Appearance
 
-NavigationView can be customized using `NavStyleManager` and `NavStyle`.
+* The color preferences of the `NavigationView` can be changed by using themes.
+* You can either use pre-defined system themes or create your own custom themes.
+* `NavStyle` is an object that represents theme attributes.
+* `NavStyleManager` is responsible for creating, storing, and handling `NavigationView` themes.
 
 <details>
 <summary><b>1. Pre-defined system themes</b></summary>
