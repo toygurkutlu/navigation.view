@@ -267,11 +267,60 @@ NavigationView can be customized using `NavStyleManager` and `NavStyle`.
 <summary><b>2. Create a theme</b></summary><br>
 	
 You can create a new theme with creating your own `NavStyle`. `NavStyle` object contains following 3 objects:<br>
-<ul>
-<li><code>NavAttributes</code> : Body attributes of <code>NavigationView</code></li><br>
-<li><code>NavTitleAttributes</code> : Title apperance attributes</li><br>
-<li><code>NavSubtitleAttributes</code> : Subtitle appearance attribtes</li>.
-</ul>
+
+<details>
+<summary><b>NavAttributes</b></summary><br>
+
+Body attributes of `NavigationView`.
+
+
+<details>
+<summary><b>Fields</b></summary><br>
+<blockquote>
+	
+* `String background`
+ Represents the hexadecimal code representation of the background color for the `NavigationView`. 
+
+* `isCollapseIconsColored`
+`true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; `false` if they use their own original colors.
+
+* `String collapseIconsColor`
+Represents the hexadecimal representation of the colors for the collapse and expanded icons.
+
+</details>
+
+<details>
+<summary><b>setter methods</b></summary><br>
+<blockquote>
+	
+* `setBackground(Color background)`
+ Takes the `background` object as a parameter and coverts it to a hexadecimal code.
+
+* `setCollapseIconsColored(boolean isCollapsedIconsColored)`
+`true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; `false` if they use their own original colors.
+
+* `setCollapseIconsColor(Color collapseIconsColor)`
+Takes the `collapseIconsColor` object as a parameter and converts it to a hexadecimal code.
+
+</details>
+
+<details>
+<summary><b>getter methods</b></summary><br>
+<blockquote>
+	
+* `getBackground()`
+Converts the hexadecimal code back to a `Color` object and returns it.
+
+* `isCollapseIconsColored()`
+Returns `true` if the navigation icons (collapsed and expanded) use the `collapseIconsColor`; returns `false` if they use their own original colors.
+
+* `getCollapseIconsColor()`
+Converts the hexadecimal code back to a `Color` object and returns it.
+
+</details>
+
+
+</blockquote>
 
 </details>
 
@@ -297,6 +346,7 @@ The selected system theme's ID is stored in Java Preferences and will be automat
 
 > **Note:** Pre-defined system theme IDs are 0-indexed (ranging from 0 to 3). User-defined theme IDs start from 4 and increment sequentially.
 
+</details>
 </details>
 
 ## Managers
