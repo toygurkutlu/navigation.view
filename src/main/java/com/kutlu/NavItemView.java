@@ -28,6 +28,7 @@ public class NavItemView extends JPanel {
     private final int titleIndex;
     private int subWidth = 0;
     private int headerWidth = 0;
+    private boolean canCollapse;
 
     /**
      * A listener interface for receiving title and subtitle click events.
@@ -87,6 +88,7 @@ public class NavItemView extends JPanel {
         style = NavStyleManager.getSelectedTheme();
         titleStyle = style.getTitleAttributes();
         subStyle = style.getSubtitleAttributes();
+        canCollapse = NavStateManager.subsCanCollapse(navName);
         init();
     }
 
@@ -162,6 +164,19 @@ public class NavItemView extends JPanel {
         return navItem.getSubtitles() != null && navItem.getSubtitles().length > 0;
     }
 
+    /**
+     * Sets whether the subtitles' collapse mechanism is enabled.
+     *
+     * @param canCollapse {@code true} to enable the subtitle collapse mechanism;
+     *                    {@code false} to disable the subtitle collapse mechanism.
+     */
+    public void setSubsCanCollapse(boolean canCollapse){
+        this.canCollapse = canCollapse;
+        if(!canCollapse){
+            subPanel.setVisible(true);
+        }
+    }
+
     private void init() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.WEST;
@@ -229,7 +244,7 @@ public class NavItemView extends JPanel {
         headerPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (subPanel != null) {
+                if (subPanel != null && canCollapse) {
                     toggleSubPanel(subPanel.isVisible());
                 } else {
                     if (listener != null) listener.onTitleClick(titleIndex);
@@ -343,7 +358,12 @@ public class NavItemView extends JPanel {
         subWidth = subPanel.getMinimumSize().width;
 
         subPanel.setMinimumSize(new Dimension(getMaxWidth(), subPanel.getMinimumSize().height));
-        subPanel.setVisible(NavStateManager.isSubCollapsed(navName, titleIndex));
+
+        if(canCollapse) {
+            subPanel.setVisible(NavStateManager.isSubCollapsed(navName, titleIndex));
+        }else{
+            subPanel.setVisible(true);
+        }
     }
 
     private void toggleSubPanel(boolean collapsed) {

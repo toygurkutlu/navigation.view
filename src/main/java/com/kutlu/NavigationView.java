@@ -253,4 +253,16 @@ public class NavigationView extends JPanel {
             NavStateManager.setNavCollapsed(navName, false);
         }
     }
+    /**
+     * Sets whether the subtitles' collapse mechanism is enabled.
+     *
+     * @param canCollapse {@code true} to enable the subtitle collapse mechanism;
+     *                    {@code false} to disable the subtitle collapse mechanism.
+     */
+    public void setSubsCanCollapse(boolean canCollapse){
+        NavStateManager.setSubsCanCollapse(navName, canCollapse);
+        for(NavItemView view : items){
+            view.setSubsCanCollapse(canCollapse);
+        }
+    }
 }

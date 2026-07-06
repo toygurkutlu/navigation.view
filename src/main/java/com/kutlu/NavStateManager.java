@@ -21,6 +21,7 @@ public class NavStateManager {
     private static final String SELECTED_TITLE = ".selected.title";
     private static final String SELECTED_SUBTITLE = ".selected.subtitle";
     private static final String SUB_COLLAPSE = ".sub.collapse";
+    private static final String SUBS_CAN_COLLAPSE = ".subs.can.collapse";
 
     /**
      * Gets whether the collapse mechanism is enabled for the specified {@code NavigationView}.
@@ -28,20 +29,19 @@ public class NavStateManager {
      * @param navName The name of the {@code NavigationView}.
      * @return {@code true} if the collapse mechanism is enabled; {@code false} otherwise.
      */
-    public static boolean navCanCollapse(String navName){
+    public static boolean navCanCollapse(String navName) {
         return PREF.getBoolean("nav." + navName + CAN_COLLAPSE, true);
     }
 
     /**
      * Sets whether the collapse mechanism is enabled.
      *
-     * @param navName The name of the {@code NavigationView}.
+     * @param navName     The name of the {@code NavigationView}.
      * @param canCollapse {@code true} to enable the collapse mechanism and display the {@code navIcon};
      *                    {@code false} to disable the collapse mechanism and remove the {@code navIcon}.
      */
-
-    public static void setNavCanCollapse(String navName, boolean canCollapse){
-        PREF.putBoolean("nav."+navName + CAN_COLLAPSE, canCollapse);
+    public static void setNavCanCollapse(String navName, boolean canCollapse) {
+        PREF.putBoolean("nav." + navName + CAN_COLLAPSE, canCollapse);
     }
 
     /**
@@ -57,7 +57,7 @@ public class NavStateManager {
     /**
      * Sets {@code NavigationView}'s collapse status.
      *
-     * @param navName      The name of the {@code NavigationView}
+     * @param navName   The name of the {@code NavigationView}
      * @param isVisible {@code true} if {@code NavigationView} is collapsed; {@code false} otherwise.
      */
     public static void setNavCollapsed(String navName, boolean isVisible) {
@@ -127,5 +127,26 @@ public class NavStateManager {
     public static void setSubCollapsed(String navName, int titleIndex, boolean collapsed) {
         String key = "nav." + navName + SUB_COLLAPSE + titleIndex;
         PREF.putBoolean(key, collapsed);
+    }
+
+    /**
+     * Sets whether the subtitles' collapse mechanism is enabled.
+     *
+     * @param navName     The name of the {@code NavigationView}.
+     * @param canCollapse {@code true} to enable the subtitle collapse mechanism;
+     *                    {@code false} to disable the subtitle collapse mechanism.
+     */
+    public static void setSubsCanCollapse(String navName, boolean canCollapse) {
+        PREF.putBoolean("nav." + navName + SUBS_CAN_COLLAPSE, canCollapse);
+    }
+
+    /**
+     * Gets whether the subtitle collapse mechanism is enabled for the specified {@code NavigationView}.
+     *
+     * @param navName The name of the {@code NavigationView}.
+     * @return {@code true} if the subtitle collapse mechanism is enabled; {@code false} otherwise.
+     */
+    public static boolean subsCanCollapse(String navName) {
+        return PREF.getBoolean("nav." + navName + SUBS_CAN_COLLAPSE, true);
     }
 }

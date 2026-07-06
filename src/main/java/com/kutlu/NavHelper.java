@@ -47,11 +47,11 @@ public class NavHelper {
     /**
      * Converts a {@code Color} object to its hexadecimal string representation.
      *
-     * @param c The color to convert.
+     * @param color The color to convert.
      * @return The hex code string of the color (e.g., "#FFFFFF").
      */
-    public static String colorToHex(Color c) {
-        return "#" + Integer.toHexString(c.getRGB()).substring(2);
+    public static String colorToHex(Color color) {
+        return "#" + Integer.toHexString(color.getRGB()).substring(2);
     }
 
     /**
