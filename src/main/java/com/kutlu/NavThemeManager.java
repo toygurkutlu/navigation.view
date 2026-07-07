@@ -2,10 +2,7 @@ package com.kutlu;
 
 import com.google.gson.Gson;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.prefs.Preferences;
