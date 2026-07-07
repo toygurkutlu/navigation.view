@@ -772,7 +772,7 @@ The theme of the `NavigationView`.
 <details>
 <summary><b>Fields</b></summary>
 
-* `NavAttributes navAttributes`<br>
+* `NavAttributes bodyAttributes`<br>
 Body attributes of the `NavigationView`.
 
 * `NavTitleAttributes titleAttributes`<br>
@@ -786,7 +786,7 @@ Title attributes of the `NavigationView`.
 <details>
 <summary><b>setter methods</b></summary>
 	
-* `setNavAttributes(NavAttributes navAttributes)`<br>
+* `setNavAttributes(NavAttributes bodyAttributes)`<br>
 Sets the body attributes for `NavigationView`.
 
 * `setTitleAttributes(NavTitleAttributes titleAttributes)`<br>

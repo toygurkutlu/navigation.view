@@ -3,6 +3,7 @@ package com.kutlu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 /**
  * Helper class that contains type converters.
@@ -62,5 +63,23 @@ public class NavHelper {
      */
     public static Color hexToColor(String colorHex) {
         return Color.decode(colorHex);
+    }
+
+    /**
+     * Gets the default collapsed icon.
+     *
+     * @return The default collapsed icon, or {@code null} if the icon does not exist.
+     */
+    public static Icon getDefaultCollapsedIcon(Color color) {
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavThemeManager.class.getResource("/nav/icons/right_arrow.png"))), color);
+    }
+
+    /**
+     * Gets the default expanded icon.
+     *
+     * @return The default expanded icon, or {@code null} if the icon does not exist.
+     */
+    public static Icon getDefaultExpandedIcon(Color color) {
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavThemeManager.class.getResource("/nav/icons/left_arrow.png"))), color);
     }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 /**
  * Represents the appearance of each {@code NavItem} within the {@code NavigationView}.
@@ -21,9 +22,9 @@ public class NavItemView extends JPanel {
     private JPanel headerPanel;
     private JPanel subPanel;
     private JLabel titleLabel;
-    private final NavStyle style;
-    private final NavTitleAttributes titleStyle;
-    private final NavSubtitleAttributes subStyle;
+    private final BodyAttributes bodyAttributes;
+    private final TextAttributes titleAttributes;
+    private final TextAttributes subtitleAttributes;
     private OnItemClickListener listener;
     private final int titleIndex;
     private int subWidth = 0;
@@ -85,10 +86,11 @@ public class NavItemView extends JPanel {
         this.navName = navName;
         this.titleIndex = titleIndex;
 
-        style = NavStyleManager.getSelectedTheme();
+        NavTheme theme = NavThemeManager.getSelectedTheme();
 
-        titleStyle = style.getTitleAttributes();
-        subStyle = style.getSubtitleAttributes();
+        bodyAttributes = Objects.requireNonNull(theme).getBodyAttributes();
+        titleAttributes = Objects.requireNonNull(theme).getTitleAttributes();
+        subtitleAttributes = Objects.requireNonNull(theme).getSubtitleAttributes();
         canCollapse = NavStateManager.subsCanCollapse(navName);
         init();
     }
@@ -97,8 +99,8 @@ public class NavItemView extends JPanel {
      * Sets the selected appearance for the title.
      */
     public void setTitleSelected() {
-        headerPanel.setBackground(titleStyle.getSelectedBackground());
-        titleLabel.setForeground(titleStyle.getSelectedForeground());
+        headerPanel.setBackground(titleAttributes.getSelectedBackground());
+        titleLabel.setForeground(titleAttributes.getSelectedForeground());
 
         NavStateManager.setSelectedTitleIndex(navName, titleIndex);
     }
@@ -107,8 +109,8 @@ public class NavItemView extends JPanel {
      * Sets the deselected appearance for the title.
      */
     public void setTitleDeselected() {
-        headerPanel.setBackground(titleStyle.getBackground());
-        titleLabel.setForeground(titleStyle.getForeground());
+        headerPanel.setBackground(titleAttributes.getBackground());
+        titleLabel.setForeground(titleAttributes.getForeground());
     }
 
     /**
@@ -124,8 +126,8 @@ public class NavItemView extends JPanel {
         String subName = navName + "." + titleIndex + ".sub." + subIndex;
         for (Component c : itemPanel.getComponents()) {
             if (c instanceof JLabel && c.getName().equals(subName)) {
-                c.setForeground(subStyle.getSelectedForeground());
-                itemPanel.setBackground(subStyle.getSelectedBackground());
+                c.setForeground(subtitleAttributes.getSelectedForeground());
+                itemPanel.setBackground(subtitleAttributes.getSelectedBackground());
                 NavStateManager.setSelectedSubIndex(navName, subIndex);
             }
         }
@@ -141,8 +143,8 @@ public class NavItemView extends JPanel {
         String subName = navName + "." + titleIndex + ".sub." + subIndex;
         for (Component c : itemPanel.getComponents()) {
             if (c instanceof JLabel && c.getName().equals(subName)) {
-                c.setForeground(subStyle.getForeground());
-                itemPanel.setBackground(subStyle.getBackground());
+                c.setForeground(subtitleAttributes.getForeground());
+                itemPanel.setBackground(subtitleAttributes.getBackground());
             }
         }
     }
@@ -195,17 +197,17 @@ public class NavItemView extends JPanel {
             add(subPanel, gbc);
         }
 
-        setBackground(style.getNavAttributes().getBackground());
+        setBackground(bodyAttributes.getBackground());
     }
 
     private void createHeaderPanel() {
         headerPanel = new JPanel(new GridBagLayout());
-        headerPanel.setBackground(currentTitleIsSelected() ? titleStyle.getSelectedBackground()
-                                          : titleStyle.getBackground());
+        headerPanel.setBackground(currentTitleIsSelected() ? titleAttributes.getSelectedBackground()
+                                          : titleAttributes.getBackground());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(titleStyle.getGapTop(), titleStyle.getGapLeft(), titleStyle.getGapBottom(),
-                                titleStyle.getGapRight());
+        gbc.insets = new Insets(titleAttributes.getGapTop(), titleAttributes.getGapLeft(), titleAttributes.getGapBottom(),
+                                titleAttributes.getGapRight());
 
         gbc.fill = GridBagConstraints.BOTH;
         gbc.anchor = GridBagConstraints.WEST;
@@ -214,25 +216,25 @@ public class NavItemView extends JPanel {
 
         JLabel iconLabel;
         titleLabel = new JLabel(navItem.getTitle());
-        titleLabel.setFont(titleStyle.getFont());
-        titleLabel.setForeground(currentTitleIsSelected() ? titleStyle.getSelectedForeground()
-                                         : titleStyle.getForeground());
+        titleLabel.setFont(titleAttributes.getFont());
+        titleLabel.setForeground(currentTitleIsSelected() ? titleAttributes.getSelectedForeground()
+                                         : titleAttributes.getForeground());
 
         if (navItem.getTitleIcon() != null) {
             iconLabel = new JLabel(navItem.getTitleIcon());
 
-            gbc.insets.right = titleStyle.getIconTextGap();
+            gbc.insets.right = titleAttributes.getIconTextGap();
 
-            if (titleStyle.getTextPosition() == TextPosition.LEFT) {
+            if (titleAttributes.getTextPosition() == TextPosition.LEFT) {
                 headerPanel.add(titleLabel, gbc);
                 gbc.gridx++;
-                gbc.insets.right = titleStyle.getGapRight();
+                gbc.insets.right = titleAttributes.getGapRight();
                 gbc.weightx = 1;
                 headerPanel.add(iconLabel, gbc);
             } else {
                 headerPanel.add(iconLabel, gbc);
                 gbc.gridx++;
-                gbc.insets.right = titleStyle.getGapRight();
+                gbc.insets.right = titleAttributes.getGapRight();
                 gbc.weightx = 1;
                 headerPanel.add(titleLabel, gbc);
             }
@@ -254,16 +256,16 @@ public class NavItemView extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                headerPanel.setBackground(titleStyle.getHoverBackground());
-                titleLabel.setForeground(titleStyle.getHoverForeground());
+                headerPanel.setBackground(titleAttributes.getHoverBackground());
+                titleLabel.setForeground(titleAttributes.getHoverForeground());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                headerPanel.setBackground(currentTitleIsSelected() ? titleStyle.getSelectedBackground()
-                                                  : titleStyle.getBackground());
-                titleLabel.setForeground(currentTitleIsSelected() ? titleStyle.getSelectedForeground()
-                                                 : titleStyle.getForeground());
+                headerPanel.setBackground(currentTitleIsSelected() ? titleAttributes.getSelectedBackground()
+                                                  : titleAttributes.getBackground());
+                titleLabel.setForeground(currentTitleIsSelected() ? titleAttributes.getSelectedForeground()
+                                                 : titleAttributes.getForeground());
             }
         });
         headerPanel.setMinimumSize(new Dimension(getMaxWidth(), headerPanel.getMinimumSize().height));
@@ -271,7 +273,7 @@ public class NavItemView extends JPanel {
 
     private void createSubPanel() {
         subPanel = new JPanel(new GridBagLayout());
-        subPanel.setBackground(subStyle.getBackground());
+        subPanel.setBackground(subtitleAttributes.getBackground());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -285,11 +287,11 @@ public class NavItemView extends JPanel {
 
         for (int i = 0; i < subtitles.length; i++) {
             JPanel itemPanel = new JPanel(new GridBagLayout());
-            itemPanel.setBackground(currentSubIsSelected(i) ? subStyle.getSelectedBackground() : subStyle.getBackground());
+            itemPanel.setBackground(currentSubIsSelected(i) ? subtitleAttributes.getSelectedBackground() : subtitleAttributes.getBackground());
 
             GridBagConstraints gbcItem = new GridBagConstraints();
-            gbcItem.insets = new Insets(subStyle.getGapTop(), subStyle.getGapLeft(), subStyle.getGapBottom(),
-                                        subStyle.getGapRight());
+            gbcItem.insets = new Insets(subtitleAttributes.getGapTop(), subtitleAttributes.getGapLeft(), subtitleAttributes.getGapBottom(),
+                                        subtitleAttributes.getGapRight());
             gbcItem.gridx = 0;
             gbcItem.gridy = 0;
             gbcItem.fill = GridBagConstraints.HORIZONTAL;
@@ -299,27 +301,27 @@ public class NavItemView extends JPanel {
 
             JLabel subIconLabel;
             JLabel subLabel = new JLabel(subtitles[i]);
-            subLabel.setFont(subStyle.getFont());
-            subLabel.setForeground(currentSubIsSelected(i) ? subStyle.getSelectedForeground() : subStyle.getForeground());
+            subLabel.setFont(subtitleAttributes.getFont());
+            subLabel.setForeground(currentSubIsSelected(i) ? subtitleAttributes.getSelectedForeground() : subtitleAttributes.getForeground());
 
             subLabel.setName(subName);
 
             if (icons != null && icons[i] != null) {
-                gbcItem.insets.right = subStyle.getIconTextGap();
+                gbcItem.insets.right = subtitleAttributes.getIconTextGap();
                 subIconLabel = new JLabel(icons[i]);
 
-                if (subStyle.getTextPosition() == TextPosition.LEFT) {
+                if (subtitleAttributes.getTextPosition() == TextPosition.LEFT) {
                     gbcItem.weightx = 0;
                     itemPanel.add(subLabel, gbcItem);
                     gbcItem.gridx++;
-                    gbcItem.insets.left = subStyle.getGapBottom();
+                    gbcItem.insets.left = subtitleAttributes.getGapBottom();
                     gbcItem.weightx = 1;
                     itemPanel.add(subIconLabel, gbcItem);
                 } else {
                     gbcItem.weightx = 0;
                     itemPanel.add(subIconLabel, gbcItem);
                     gbcItem.gridx++;
-                    gbcItem.insets.left = subStyle.getGapBottom();
+                    gbcItem.insets.left = subtitleAttributes.getGapBottom();
                     gbcItem.weightx = 1;
                     itemPanel.add(subLabel, gbcItem);
                 }
@@ -339,23 +341,23 @@ public class NavItemView extends JPanel {
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    itemPanel.setBackground(subStyle.getHoverBackground());
-                    subLabel.setForeground(subStyle.getHoverForeground());
+                    itemPanel.setBackground(subtitleAttributes.getHoverBackground());
+                    subLabel.setForeground(subtitleAttributes.getHoverForeground());
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    itemPanel.setBackground(currentSubIsSelected(finalI) ? subStyle.getSelectedBackground()
-                                                    : subStyle.getBackground());
-                    subLabel.setForeground(currentSubIsSelected(finalI) ? subStyle.getSelectedForeground()
-                                                   : subStyle.getForeground());
+                    itemPanel.setBackground(currentSubIsSelected(finalI) ? subtitleAttributes.getSelectedBackground()
+                                                    : subtitleAttributes.getBackground());
+                    subLabel.setForeground(currentSubIsSelected(finalI) ? subtitleAttributes.getSelectedForeground()
+                                                   : subtitleAttributes.getForeground());
                 }
             });
             gbc.gridy = i;
             subPanel.add(itemPanel, gbc);
         }
 
-        subPanel.setBackground(subStyle.getBackground());
+        subPanel.setBackground(subtitleAttributes.getBackground());
         subWidth = subPanel.getMinimumSize().width;
 
         subPanel.setMinimumSize(new Dimension(getMaxWidth(), subPanel.getMinimumSize().height));

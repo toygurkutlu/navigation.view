@@ -5,18 +5,34 @@ import java.awt.*;
 /**
  * Provides attributes for customizing the style of the {@code NavigationView} body.<br>
  * <p>
- * • For the {@code NavigationView} body appearance, use {@code NavAttributes}.<br>
- * • For the {@code Subtitle} text appearance, use {@code NavSubtitleAttributes}.<br>
+ * • For the text appearance, use {@code TextAttributes}.<br>
  * </p>
  *
- * @see NavTitleAttributes
- * @see NavSubtitleAttributes
+ * @see TextAttributes
  */
-public class NavAttributes {
+public class BodyAttributes {
 
     private String background;
     private String collapseIconsColor;
     private boolean isCollapseIconsColored;
+
+    /**
+     * Empty constructor of {@code BodyAttributes}.<br>
+     * Can be used with {@code setter} methods for customizing your style.
+     */
+    public BodyAttributes() {
+    }
+
+    /**
+     * Constructs a deep copy of the specified {@code BodyAttributes}.
+     *
+     * @param bodyAttributes The body attributes to copy.
+     */
+    public BodyAttributes(BodyAttributes bodyAttributes) {
+        this.background = NavHelper.colorToHex(bodyAttributes.getBackground());
+        this.collapseIconsColor = NavHelper.colorToHex(bodyAttributes.getCollapseIconsColor());
+        this.isCollapseIconsColored = bodyAttributes.isCollapseIconsColored();
+    }
 
     /**
      * Gets the background color of the {@code NavigationView}.

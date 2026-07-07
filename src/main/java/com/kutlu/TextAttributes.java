@@ -1,19 +1,14 @@
 package com.kutlu;
 
-
 import java.awt.*;
 
 /**
- * Provides attributes for customizing the style of the {@code Titles}.
- * <p>
- * • For the {@code NavigationView} body appearance, use {@code NavAttributes}.<br>
- * • For the {@code Subtitle} text appearance, use {@code NavSubtitleAttributes}.
- * </p>
+ * Provides attributes for customizing the style of the text items.<br>
+ * <p>• For the {@code NavigationView} body appearance, use {@code NavAttributes}.</p>
  *
- * @see NavAttributes
- * @see NavSubtitleAttributes
+ * @see BodyAttributes
  */
-public class NavTitleAttributes extends NavTextAttributes {
+public class TextAttributes {
 
     private String foreground;
     private String background;
@@ -32,11 +27,40 @@ public class NavTitleAttributes extends NavTextAttributes {
     private int fontSize;
 
     /**
+     * Empty constructor of {@code NavTextAttributes}.<br>
+     * Can be used with {@code setter} methods for customizing your text style.
+     */
+    public TextAttributes() {
+    }
+
+    /**
+     * Constructs a deep copy of the specified {@code NavTextAttributes}.
+     *
+     * @param textAttributes The text attributes to copy.
+     */
+    public TextAttributes(TextAttributes textAttributes) {
+        this.foreground = NavHelper.colorToHex(textAttributes.getForeground());
+        this.background = NavHelper.colorToHex(textAttributes.getBackground());
+        this.selectedForeground = NavHelper.colorToHex(textAttributes.getSelectedForeground());
+        this.selectedBackground = NavHelper.colorToHex(textAttributes.getSelectedBackground());
+        this.hoverForeground = NavHelper.colorToHex(textAttributes.getHoverForeground());
+        this.hoverBackground = NavHelper.colorToHex(textAttributes.getHoverBackground());
+        this.textPosition = textAttributes.getTextPosition();
+        this.iconTextGap = textAttributes.getIconTextGap();
+        this.gapTop = textAttributes.getGapTop();
+        this.gapLeft = textAttributes.getGapLeft();
+        this.gapBottom = textAttributes.getGapBottom();
+        this.gapRight = textAttributes.getGapRight();
+        this.fontFamily = textAttributes.getFontFamily();
+        this.fontStyle = textAttributes.getFontStyle();
+        this.fontSize = textAttributes.getFontSize();
+    }
+
+    /**
      * Gets the foreground color.
      *
      * @return The text color (foreground).
      */
-    @Override
     public Color getForeground() {
         return NavHelper.hexToColor(foreground);
     }
@@ -55,7 +79,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The text's background color.
      */
-    @Override
     public Color getBackground() {
         return NavHelper.hexToColor(background);
     }
@@ -75,7 +98,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      * @return The selected item's foreground color.
      * @apiNote This foreground color is used to indicate which item is selected when a user clicks it.
      */
-    @Override
     public Color getSelectedForeground() {
         return NavHelper.hexToColor(selectedForeground);
     }
@@ -97,7 +119,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      * @return The selected item's background color.
      * @apiNote This background color is used to indicate which item is selected when a user clicks it.
      */
-    @Override
     public Color getSelectedBackground() {
         return NavHelper.hexToColor(selectedBackground);
     }
@@ -117,10 +138,9 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Gets the hover foreground color.
      *
      * @return The hover foreground color.
-     * @apiNote The {@code hoverForeground} color is used to highlight the title
+     * @apiNote The {@code hoverForeground} color is used to highlight the text
      * by changing its foreground when the mouse hovers over its area.
      */
-    @Override
     public Color getHoverForeground() {
         return NavHelper.hexToColor(hoverForeground);
     }
@@ -129,7 +149,7 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the hover foreground color.
      *
      * @param hoverForeground The hover foreground color.
-     * @apiNote The {@code hoverForeground} color is used to highlight the title
+     * @apiNote The {@code hoverForeground} color is used to highlight the text
      * by changing its foreground when the mouse hovers over its area.
      */
     public void setHoverForeground(Color hoverForeground) {
@@ -140,10 +160,9 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Gets the hover background color.
      *
      * @return The hover background color.
-     * @apiNote The {@code hoverBackground} color is used to highlight the title
+     * @apiNote The {@code hoverBackground} color is used to highlight the text
      * by changing its background when the mouse hovers over its area.
      */
-    @Override
     public Color getHoverBackground() {
         return NavHelper.hexToColor(hoverBackground);
     }
@@ -152,7 +171,7 @@ public class NavTitleAttributes extends NavTextAttributes {
      * Sets the hover background color.
      *
      * @param hoverBackground The hover background color.
-     * @apiNote The {@code hoverBackground} color is used to highlight the title
+     * @apiNote The {@code hoverBackground} color is used to highlight the text
      * by changing its background when the mouse hovers over its area.
      */
     public void setHoverBackground(Color hoverBackground) {
@@ -166,7 +185,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      * @apiNote {@code TextPositions} instances can be compared using the {@code ==} operator.
      * @see TextPosition
      */
-    @Override
     public TextPosition getTextPosition() {
         return textPosition;
     }
@@ -189,7 +207,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return Gap size in pixels.
      */
-    @Override
     public int getIconTextGap() {
         return iconTextGap;
     }
@@ -204,23 +221,30 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the space between the text and the item above it.
+     * Gets the space between the item text and the element above it.
      *
      * @return The gap size in pixels.
-     * @apiNote • {@code gapTop} represents the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
-     * • For the first title, it represents the space between the title and the top of the NavigationView.
+     * @apiNote <p>
+     * <b>If used with titles:</b> {@code gapTop} represents the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
+     * • Note that for the first title, it represents the space between the title and the top of the {@code NavigationView}.<br><br>
+     * <b>If used with subtitles:</b> {@code gapTop} represents the space between consecutive subtitles.<br>
+     * • Note that for the first subtitle of a group, it represents the space between the subtitle and its parent title.
+     * </p>
      */
-    @Override
     public int getGapTop() {
         return gapTop;
     }
 
     /**
-     * Sets the space between the text and the item above it.
+     * Gets the space between the item text and the element above it.
      *
      * @param gapTop The gap size in pixels.
-     * @apiNote • {@code gapTop} sets the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
-     * • For the first title, it sets the space between the title and the top of the NavigationView.
+     * @apiNote <p>
+     * <b>If used with titles:</b> {@code gapTop} represents the space between the current title and either the previous title's last subtitle (if present) or the previous title itself.<br>
+     * • Note that for the first title, it represents the space between the title and the top of the {@code NavigationView}.<br><br>
+     * <b>If used with subtitles:</b> {@code gapTop} represents the space between consecutive subtitles.<br>
+     * • Note that for the first subtitle of a group, it represents the space between the subtitle and its parent title.
+     * </p>
      */
     public void setGapTop(int gapTop) {
         this.gapTop = gapTop;
@@ -231,7 +255,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The gap size in pixels.
      */
-    @Override
     public int getGapLeft() {
         return gapLeft;
     }
@@ -246,21 +269,32 @@ public class NavTitleAttributes extends NavTextAttributes {
     }
 
     /**
-     * Gets the space between the text and the item below it.
+     * Gets the space between the item text and the element below it.
      *
      * @return The gap size in pixels.
-     * @apiNote {@code gapBottom} represents the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     * @apiNote <p>
+     *     <b>If used with titles:</b> {@code gapBottom} represents the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     *     • Note that for the last title and if subtitles do not exist, it represents the space between the title and the bottom of the {@code `NavigationView`}.<br><br>
+     *     <b>If used with subtitles:</b> {@code gapBottom} represents the space between consecutive subtitles.<br>
+     *     • For the last subtitle of a group, it represents the space between that subtitle and the next title.<br>
+     *     • Note that for the very last subtitle in the entire structure, it represents the space between that subtitle and the bottom of the {@code `NavigationView`}.
+     * </p>
      */
-    @Override
     public int getGapBottom() {
         return gapBottom;
     }
 
     /**
-     * Sets the space between the text and the item below it.
+     * Sets the space between the item text and the element below it.
      *
-     * @param gapBottom The gap size in pixels.
-     * @apiNote {@code gapBottom} sets the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     * @param gapBottom  The gap size in pixels.
+     * @apiNote <p>
+     *     <b>If used with titles:</b> {@code gapBottom} represents the space between the current title and either its first subtitle (if present) or the next title itself.<br>
+     *     • Note that for the last title and if subtitles do not exist, it represents the space between the title and the bottom of the {@code `NavigationView`}.<br><br>
+     *     <b>If used with subtitles:</b> {@code gapBottom} represents the space between consecutive subtitles.<br>
+     *     • For the last subtitle of a group, it represents the space between that subtitle and the next title.<br>
+     *     • Note that for the very last subtitle in the entire structure, it represents the space between that subtitle and the bottom of the {@code `NavigationView`}.
+     * </p>
      */
     public void setGapBottom(int gapBottom) {
         this.gapBottom = gapBottom;
@@ -271,7 +305,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The gap size in pixels.
      */
-    @Override
     public int getGapRight() {
         return gapRight;
     }
@@ -288,9 +321,8 @@ public class NavTitleAttributes extends NavTextAttributes {
     /**
      * Gets the font of the text.
      *
-     * @return The font of the text.
+     * @return  font The font of the text.
      */
-    @Override
     public Font getFont() {
         return new Font(fontFamily, fontStyle, fontSize);
     }
@@ -311,7 +343,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The font family of the text.
      */
-    @Override
     public String getFontFamily() {
         return fontFamily;
     }
@@ -330,7 +361,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The font style of the text.
      */
-    @Override
     public int getFontStyle() {
         return fontStyle;
     }
@@ -349,7 +379,6 @@ public class NavTitleAttributes extends NavTextAttributes {
      *
      * @return The font style of the text.
      */
-    @Override
     public int getFontSize() {
         return fontStyle;
     }

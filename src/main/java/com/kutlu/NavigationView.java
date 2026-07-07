@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 /**
  * Builds the specified named {@code NavigationView} using a varargs list of {@code NavItem} instances.
@@ -25,7 +26,7 @@ public class NavigationView extends JPanel {
     private final String navName;
     private int selectedTitle, selectedSub;
     private OnItemClickListener listener;
-    private final NavAttributes attr;
+    private BodyAttributes attr;
     private Icon navCollapsedIcon;
     private Icon navExpandedIcon;
     private JPanel textPanel;
@@ -103,16 +104,29 @@ public class NavigationView extends JPanel {
         isNavCollapsed = NavStateManager.isNavCollapsed(navName);
         navCanCollapse = NavStateManager.navCanCollapse(navName);
 
-        attr = NavStyleManager.getSelectedTheme().getNavAttributes();
+        attr = Objects.requireNonNull(NavThemeManager.getSelectedTheme()).getBodyAttributes();
         selectedTitle = NavStateManager.getSelectedTitleIndex(navName);
         selectedSub = NavStateManager.getSelectedSubIndex(navName);
 
         init();
     }
 
-    public void setTheme(int themeId){
+    /**
+     * Applies the new theme to the {@code NavigationView}.
+     * @param theme The new theme.
+     * */
+    public void setTheme(NavTheme theme){
+        attr = theme.getBodyAttributes();
 
+        if(attr.isCollapseIconsColored()) {
+            navExpandedIcon = NavHelper.recolorIcon(navExpandedIcon, attr.getCollapseIconsColor());
+            navCollapsedIcon = NavHelper.recolorIcon(navCollapsedIcon, attr.getCollapseIconsColor());
+        }
 
+        removeAll();
+        init();
+        revalidate();
+        repaint();
     }
 
     /**
@@ -146,11 +160,12 @@ public class NavigationView extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
+        Color collapseIconColor = attr.getCollapseIconsColor();
         if (navExpandedIcon == null) {
-            navExpandedIcon = NavStyleManager.getDefaultExpandedIcon();
+            navExpandedIcon = NavHelper.getDefaultExpandedIcon(collapseIconColor);
         }
         if (navCollapsedIcon == null) {
-            navCollapsedIcon = NavStyleManager.getDefaultCollapsedIcon();
+            navCollapsedIcon = NavHelper.getDefaultCollapsedIcon(collapseIconColor);
         }
 
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -252,10 +267,12 @@ public class NavigationView extends JPanel {
 
         if (!textPanel.isVisible()) textPanel.setVisible(true);
         if(iconLabel != null) iconLabel.setVisible(canCollapse);
+
         NavStateManager.setNavCanCollapse(navName, canCollapse);
         if(navCanCollapse && !canCollapse){
             navCanCollapse = false;
             NavStateManager.setNavCollapsed(navName, false);
+            iconLabel.setIcon(navExpandedIcon);
         }
     }
     /**
