@@ -249,6 +249,7 @@ public class NavigationView extends JPanel {
             }
         });
         iconLabel.setIcon(!isNavCollapsed ? navExpandedIcon : navCollapsedIcon);
+        iconLabel.setVisible(navCanCollapse);
 
         textPanel.setVisible(!isNavCollapsed);
 
