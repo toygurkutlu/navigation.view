@@ -71,7 +71,7 @@ public class NavHelper {
      * @return The default collapsed icon, or {@code null} if the icon does not exist.
      */
     public static Icon getDefaultCollapsedIcon(Color color) {
-        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavThemeManager.class.getResource("/nav/icons/right_arrow.png"))), color);
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavHelper.class.getResource("/nav/icons/right_arrow.png"))), color);
     }
 
     /**
@@ -80,6 +80,6 @@ public class NavHelper {
      * @return The default expanded icon, or {@code null} if the icon does not exist.
      */
     public static Icon getDefaultExpandedIcon(Color color) {
-        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavThemeManager.class.getResource("/nav/icons/left_arrow.png"))), color);
+        return NavHelper.recolorIcon(new ImageIcon(Objects.requireNonNull(NavHelper.class.getResource("/nav/icons/left_arrow.png"))), color);
     }
 }
